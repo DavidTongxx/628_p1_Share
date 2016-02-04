@@ -5,10 +5,10 @@ This is repository for course 628 project one Group [2].
 
 Datasets and R codes are provide here.
 
-PM 2.5
+##PM 2.5
 The U.S. Department of State Data Use Statement at http://www.stateair.net/web/historical/1/4.html applies to these and all data available from the Mission China air quality monitoring program.
 
-Temperature
+##Temperature
 
 Here is the meteorological data where I got the NOAA files updated for the whole of 2015.
 http://rda.ucar.edu/datasets/ds091.0/
