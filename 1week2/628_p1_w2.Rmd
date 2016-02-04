@@ -4,7 +4,7 @@ author: "Xingxing Tong"
 output: pdf_document
 ---
 
-Edited: 02/04/2016
+
 
 
 
@@ -31,8 +31,7 @@ A fact sheet with definitions and metadata for this dataset can be found at http
 
 The U.S. Department of State Data Use Statement at http://www.stateair.net/web/historical/1/4.html applies to these and all data available from the Mission China air quality monitoring program.
 
-```{r,echo=FALSE}
-
+```{r}
 
 days_no <-c(rep(1:31,each=24),rep(32:59,each=24),rep(60:90,each=24),
             rep(91:120,each=24),rep(121:151,each=24),rep(152:181,each=24),
@@ -101,10 +100,8 @@ grid.arrange(p_air0,p_air8,p_air12, p_air18, ncol=2,nrow=2)
 ```
 
 
-**Data clean Method I**
-
 delete -999
-```{r,echo=FALSE}
+```{r}
 #delete -999  , 1483 in total
 air_all <-air_all[air_all$Value!=-999,]
 
@@ -128,37 +125,5 @@ p_air18<-ggplot(data = air_18, aes(x=Days,y = Value,color = Site)) + geom_line()
 
 grid.arrange(p_air0,p_air8,p_air12, p_air18, ncol=2,nrow=2)
 
-```
-
-- It is really hard find any pattern in this way. So we divide 334 days into small subgroup and conduct our analysis within these groups.
-
-#First 50 days#
-```{r}
-air_0_50 <- air_0[air_0$Days <51,]
-
-p_50_v1_line<-ggplot(data = air_0_50, 
-                aes(x=Days,y = Value,color = Site))+ 
-                geom_line() + geom_point() +
-                geom_smooth()+ ggtitle("Hour 0")
-#no CI
-
-p_50_v2_line<-ggplot(data = air_0_50, 
-                aes(x=Days,y = Value,color = Site))+ 
-                geom_line() + geom_point() +
-                geom_smooth(se = FALSE)+ ggtitle("Hour 0 (no CI)")
-#no line
-p_50_v1_noline<-ggplot(data = air_0_50, 
-                aes(x=Days,y = Value,color = Site))+ 
-                geom_point(aes(shape = Site ) )+
-                geom_smooth(se = FALSE)+ ggtitle("Hour 0 (no line)")
-
-
-p_50_v2_noline<-ggplot(data = air_0_50, 
-                aes(x=Days,y = Value,color = Site))+ 
-                geom_point(aes(shape = Site ) )+
-                geom_smooth(se = FALSE)+ facet_wrap(~Site)+
-                ggtitle("Hour 0 (separated)")
-
-grid.arrange(p_50_v1_line,p_50_v2_line,p_50_v1_noline, p_50_v2_noline, ncol=2,nrow=2)
 
 ```
