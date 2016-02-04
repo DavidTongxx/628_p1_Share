@@ -1,16 +1,14 @@
 ---
 title: "628_p1"
 author: "Xingxing Tong"
-output: pdf_document
+output: html_document
 ---
 
-<<<<<<< HEAD
+###Our repo. name 628_p1_Share###
+
 Edited: 02/04/2016
 
-=======
 
-test
->>>>>>> origin/master
 
 
 ```{r}
@@ -97,7 +95,7 @@ p_air12<-ggplot(data = air_12, aes(x=Days,y = Value,color = Site)) + geom_line()
 p_air18<-ggplot(data = air_18, aes(x=Days,y = Value,color = Site)) + geom_line() + 
       geom_point() + ggtitle("Hour 18")  
 
-grid.arrange(p_air0,p_air8,p_air12, p_air18, ncol=2,nrow=2)
+#grid.arrange(p_air0,p_air8,p_air12, p_air18, ncol=2,nrow=2)
 
 
 #p_air18<-ggplot(data = air_18, aes(x=Days,y = Value,color = Site)) + geom_line() + 
@@ -131,14 +129,14 @@ p_air12<-ggplot(data = air_12, aes(x=Days,y = Value,color = Site)) + geom_line()
 p_air18<-ggplot(data = air_18, aes(x=Days,y = Value,color = Site)) + geom_line() + 
       geom_point() + geom_smooth() +ggtitle("Hour 18")  
 
-grid.arrange(p_air0,p_air8,p_air12, p_air18, ncol=2,nrow=2)
+#grid.arrange(p_air0,p_air8,p_air12, p_air18, ncol=2,nrow=2)
 
 ```
 
 - It is really hard find any pattern in this way. So we divide 334 days into small subgroup and conduct our analysis within these groups.
 
-<<<<<<< HEAD
-#First 50 days#
+
+####First 50 days####
 ```{r}
 air_0_50 <- air_0[air_0$Days <51,]
 
@@ -167,6 +165,4 @@ p_50_v2_noline<-ggplot(data = air_0_50,
 
 grid.arrange(p_50_v1_line,p_50_v2_line,p_50_v1_noline, p_50_v2_noline, ncol=2,nrow=2)
 
-=======
->>>>>>> origin/master
 ```
