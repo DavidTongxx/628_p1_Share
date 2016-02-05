@@ -29,7 +29,7 @@ Plan:Each group member explore the data individually at weekends
 Ideas and results will be shared in group discussion on Monday 1:30 pm -3:30 pm
 Datasets and sample codes are availiable in this repo.
 Good luck badgers!
-                                         By xingxing Feb. 05 /2016
+                                       
 
 Room Info of Wendt Library
 
@@ -38,6 +38,8 @@ Organization: UW-Madison
 
 Date	Start	End	Library / Building	Room	Status
 2016/2/8	13:30	15:30	WENDT	Wendt 139C Study Room	Reserved
+
+  By xingxing Feb. 05 /2016
 
 
 
