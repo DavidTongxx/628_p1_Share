@@ -20,3 +20,26 @@ Note the disclaimer on the bottom (for citation purposes):
 Here's a tutorial for reading netCDF files in R--it looks like there are good R packages specifically designed for reading files in this format, and I will be drawing data for each of the 5 cities in this format.
 http://disc.sci.gsfc.nasa.gov/recipes/?q=recipes/How-to-Read-Data-in-netCDF-Format-with-R
 
+
+#Group discussion plan for week 4 Monday 2/8 
+
+Plan:Each group member explore the data individually at weekends 
+(interesting patterns whole datasets or subsets; average issues; hour selecting,etc.)
+ 
+Ideas and results will be shared in group discussion on Monday 1:30 pm -3:30 pm
+Datasets and sample codes are availiable in this repo.
+Good luck badgers!
+                                         By xingxing Feb. 05 /2016
+
+Room Info of Wendt Library
+
+Reservation Id: 158281
+Organization: UW-Madison
+
+Date	Start	End	Library / Building	Room	Status
+2016/2/8	13:30	15:30	WENDT	Wendt 139C Study Room	Reserved
+
+
+
+
+
