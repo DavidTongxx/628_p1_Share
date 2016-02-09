@@ -58,7 +58,7 @@ The U.S. Department of State Data Use Statement at http://www.stateair.net/web/h
 
 2)Meteorological Data (7 variables) 
 
-!!!Shenqian: Fill this part 
+!!!Shengqian: Fill this part 
 
 (Alex: One or Two pages should be enough for the part of background and data source )
 
