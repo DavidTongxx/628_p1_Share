@@ -42,7 +42,6 @@ Date	Start	End	Library / Building	Room	Status
   By xingxing Feb. 05 /2016
 
 #Group discussion summary for Feb. 8 Monday
-                      Xingxing Feb. 8
 
 Part 1: Presentation for Thursday
 
@@ -78,3 +77,5 @@ Part 2: Deadlines and Details
 
 
 I will uploaded my part tonight. For Part 2, the deadline is tomorrow's Night. Alex will combine three parts together via an Rpres file and the deadline for this part is Wednesday's night. I do recommend that we should have another group discussion at Thursday morning. How about 11:15 at STAT department ? Let me know if it works for you guys.  
+
+Xingxing Feb. 8
