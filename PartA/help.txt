@@ -1,0 +1,6 @@
+1. download PartA.Rmd and 5 pictures to a file 
+2. replace the code setwd ("C:/Users/myuser/Desktop/628/PartA") to the path in your computer
+3. If you want to plot these picture yourself download air_all.Rda to your file
+
+Xingxing
+Feb. 08

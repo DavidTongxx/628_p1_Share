@@ -75,25 +75,23 @@ air_sy$Days <-days_no
 air_all <-rbind(air_sh,air_gz,air_cd,air_bj,air_sy)
 
 
+#save(air_all,file="air_all.Rda")
 
-air_0 <-air_all[air_all$Hour==0,]
-air_8 <-air_all[air_all$Hour==8,]
-air_12 <-air_all[air_all$Hour==12,]
-air_18 <-air_all[air_all$Hour==18,]
+#load("air_all.Rda")
 
-
-p_air0<-ggplot(data = air_0, aes(x=Days,y = Value,color = Site)) + geom_line() + 
-      geom_point() + ggtitle("Hour 0")
-
-p_air8<-ggplot(data = air_8, aes(x=Days,y = Value,color = Site)) + geom_line() + 
-      geom_point() + ggtitle("Hour 8")      
-
-p_air12<-ggplot(data = air_12, aes(x=Days,y = Value,color = Site)) + geom_line() + 
-      geom_point() + ggtitle("Hour 12")     
-
-
-p_air18<-ggplot(data = air_18, aes(x=Days,y = Value,color = Site)) + geom_line() + 
-      geom_point() + ggtitle("Hour 18")  
+# 
+# p_air0<-ggplot(data = air_0, aes(x=Days,y = Value,color = Site)) + geom_line() + 
+#       geom_point() + ggtitle("Hour 0")
+# 
+# p_air8<-ggplot(data = air_8, aes(x=Days,y = Value,color = Site)) + geom_line() + 
+#       geom_point() + ggtitle("Hour 8")      
+# 
+# p_air12<-ggplot(data = air_12, aes(x=Days,y = Value,color = Site)) + geom_line() + 
+#       geom_point() + ggtitle("Hour 12")     
+# 
+# 
+# p_air18<-ggplot(data = air_18, aes(x=Days,y = Value,color = Site)) + geom_line() + 
+#       geom_point() + ggtitle("Hour 18")  
 
 #grid.arrange(p_air0,p_air8,p_air12, p_air18, ncol=2,nrow=2)
 
@@ -110,14 +108,14 @@ delete -999
 ```{r,echo=FALSE}
 #delete -999  , 1483 in total
 air_all <-air_all[air_all$Value!=-999,]
-
 air_0 <-air_all[air_all$Hour==0,]
 air_8 <-air_all[air_all$Hour==8,]
 air_12 <-air_all[air_all$Hour==12,]
 air_18 <-air_all[air_all$Hour==18,]
 
 
-p_air0<-ggplot(data = air_0, aes(x=Days,y = Value,color = Site)) + geom_line() + 
+p_air0<-ggplot(data = air_0[air_0$Days <51,], aes(x=Days,y = Value,color = Site)) +
+      geom_line() + 
       geom_point() + geom_smooth()+ ggtitle("Hour 0")
 
 p_air8<-ggplot(data = air_8, aes(x=Days,y = Value,color = Site)) + geom_line() + 
@@ -137,32 +135,107 @@ p_air18<-ggplot(data = air_18, aes(x=Days,y = Value,color = Site)) + geom_line()
 
 
 ####First 50 days####
+
+
+First 50 days
+
 ```{r}
-air_0_50 <- air_0[air_0$Days <51,]
-
-p_50_v1_line<-ggplot(data = air_0_50, 
-                aes(x=Days,y = Value,color = Site))+ 
-                geom_line() + geom_point() +
-                geom_smooth()+ ggtitle("Hour 0")
-#no CI
-
-p_50_v2_line<-ggplot(data = air_0_50, 
-                aes(x=Days,y = Value,color = Site))+ 
-                geom_line() + geom_point() +
-                geom_smooth(se = FALSE)+ ggtitle("Hour 0 (no CI)")
-#no line
-p_50_v1_noline<-ggplot(data = air_0_50, 
+p1<-ggplot(data = air_0[air_0$Days <51,], 
                 aes(x=Days,y = Value,color = Site))+ 
                 geom_point(aes(shape = Site ) )+
                 geom_smooth(se = FALSE)+ ggtitle("Hour 0 (no line)")
 
-
-p_50_v2_noline<-ggplot(data = air_0_50, 
+p2<-ggplot(data = air_8[air_8$Days <51,], 
                 aes(x=Days,y = Value,color = Site))+ 
                 geom_point(aes(shape = Site ) )+
-                geom_smooth(se = FALSE)+ facet_wrap(~Site)+
-                ggtitle("Hour 0 (separated)")
+                geom_smooth(se = FALSE)+ ggtitle("Hour 8 (no line)")
 
-grid.arrange(p_50_v1_line,p_50_v2_line,p_50_v1_noline, p_50_v2_noline, ncol=2,nrow=2)
+p3<-ggplot(data = air_12[air_12$Days <51,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 12 (no line)")
+
+p4<-ggplot(data = air_0[air_18$Days <51,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 18 (no line)")
+
+grid.arrange(p1,p2,p3,p4, ncol=2,nrow=2)
+
+```
+
+
+- 51-100
+
+```{r}
+p1<-ggplot(data = air_0[air_0$Days <101 &air_0$Days >50,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 0 (no line)")
+
+p2<-ggplot(data = air_8[air_8$Days <101 &air_8$Days >50,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 8 (no line)")
+
+p3<-ggplot(data = air_12[air_12$Days <101 &air_12$Days >50,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 12 (no line)")
+
+p4<-ggplot(data = air_0[air_18$Days <101 &air_18$Days >50,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 18 (no line)")
+
+grid.arrange(p1,p2,p3,p4, ncol=2,nrow=2)
+```
+
+
+
+
+
+- 1-100
+```{r}
+p1<-ggplot(data = air_0[air_0$Days <101,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 0 (no line)")
+
+p2<-ggplot(data = air_8[air_8$Days <101,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 8 (no line)")
+
+p3<-ggplot(data = air_12[air_12$Days <101,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 12 (no line)")
+
+p4<-ggplot(data = air_0[air_18$Days <101,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 18 (no line)")
+
+grid.arrange(p1,p2,p3,p4, ncol=2,nrow=2)
+```
+
+
+
+
+
+```{r}
+fit <- lm(Value~Hour+Days,data=air_sh)
+tidy(fit)
+
+fit2 <- lm(Value~factor(Days),data=air_sh)
+tidy(fit2)
+summary(fit2)
+
+fit3 <- lm(Value ~factor(Hour),data=air_sh)
+summary(fit3)
+
+str(air_sh)
+
 
 ```
