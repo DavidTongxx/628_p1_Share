@@ -47,8 +47,7 @@ Part 1: Presentation for Thursday
 
 Our presentation will have 3 parts  
 Use R Presentation 
-(Alex: format of repesentation is very similar to R markdown you can insert R codes through each chunk 
-let me know if it doesn't work)
+(Alex: "Rpres" is very similar to R markdown you can insert R codes through each chunk let me know if it doesn't work)
 
 Dataset: 
 1)PM 2.5
