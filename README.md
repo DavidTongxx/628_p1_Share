@@ -52,6 +52,7 @@ Use R Presentation
 Dataset: 
 1)PM 2.5
 The U.S. Department of State Data Use Statement at http://www.stateair.net/web/historical/1/4.html applies to these and all data available from the Mission China air quality monitoring program.
+
 2)Meteorological Data (7 variables) 
 !!!Shenqian: fills this part 
 (Alex: One or Two pages should be enough for the part of background and data source )
@@ -75,6 +76,6 @@ Part 2: Deadlines and Details
 - upload an Rmd file for Thursday's presentation . If any datasets or images need to be loaded, please add a help.txt files to explain it to Alex. (Example: Look help.txt file in PartA)
 
 
-I will uploaded my part tonight. For Part 2, the deadline is tomorrow's Night. Alex will combine three parts together via an Rpres file and the deadline for this part is Wednesday's night. I do recommend that we should have another group discussion at Thursday morning. How about 11:15 at STAT department ? Let me know if it works for you guys.  
+I will uploaded my part tonight. For Part 2, the deadline is tomorrow's Night. Alex will combine three parts together via an Rpres file and the deadline for this part is Wednesday's night. I do recommend that we should have another group discussion on Thursday morning. How about 11:15 at STAT department ? Let me know if it works for you guys.  
 
 Xingxing Feb. 8
