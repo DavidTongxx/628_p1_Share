@@ -1,0 +1,107 @@
+PartIII
+========================================================
+author: Alex Dewey
+date: February 11, 2016
+
+
+#Sources
+#http://articles.latimes.com/2011/oct/29/world/la-fg-china-air-quality-20111030
+#
+
+```{r, echo=FALSE}
+library(ggplot2)
+library(lme4)
+days_no <-c(rep(1:31,each=24),rep(32:59,each=24),rep(60:90,each=24),
+            rep(91:120,each=24),rep(121:151,each=24),rep(152:181,each=24),
+            rep(182:212,each=24),rep(213:243,each=24),rep(244:273,each=24),
+            rep(274:304,each=24),rep(305:334,each=24))
+
+#mon_l <- rep(1:31,each=24)
+#mon_s <- rep(1:30,each=24)
+#mon_feb<- rep(1:28,each=24)
+
+#Shanghai
+air_sh <-read.csv("Shanghai_2015_HourlyPM25_created20160104.csv", 
+                    header = TRUE, sep = ",")
+air_sh$Days <-days_no
+
+#Guangzhou
+air_gz <-read.csv("Guangzhou_2015_HourlyPM25_created20160104.csv", 
+                    header = TRUE, sep = ",")
+air_gz$Days <-days_no
+
+#Guangzhou
+air_cd <-read.csv("Chengdu_2015_HourlyPM25_created20160104.csv", 
+                    header = TRUE, sep = ",")
+air_cd$Days <-days_no
+
+#Beijing
+air_bj <-read.csv("Beijing_2015_HourlyPM25_created20160104.csv", 
+                    header = TRUE, sep = ",")
+air_bj$Days <-days_no
+
+#Shenyang
+air_sy <-read.csv("Shenyang_2015_HourlyPM25_created20160104.csv", 
+                    header = TRUE, sep = ",")
+air_sy$Days <-days_no
+
+#all cities
+air_all <-rbind(air_sh,air_gz,air_cd,air_bj,air_sy)
+
+#delete -999  , 1483 in total
+air_all <-air_all[air_all$Value!=-999,]
+air_0 <-air_all[air_all$Hour==0,]
+air_8 <-air_all[air_all$Hour==8,]
+air_12 <-air_all[air_all$Hour==12,]
+air_18 <-air_all[air_all$Hour==18,]
+
+
+p_air0<-ggplot(data = air_0[air_0$Days <51,], aes(x=Days,y = Value,color = Site)) +
+      geom_line() + 
+      geom_point() + geom_smooth()+ ggtitle("Hour 0")
+
+p_air8<-ggplot(data = air_8, aes(x=Days,y = Value,color = Site)) + geom_line() + 
+      geom_point() + geom_smooth() +ggtitle("Hour 8")      
+
+p_air12<-ggplot(data = air_12, aes(x=Days,y = Value,color = Site)) + geom_line() + 
+      geom_point() + geom_smooth() +ggtitle("Hour 12")     
+
+p_air18<-ggplot(data = air_18, aes(x=Days,y = Value,color = Site)) + geom_line() + 
+      geom_point() + geom_smooth() +ggtitle("Hour 18")  
+
+#grid.arrange(p_air0,p_air8,p_air12, p_air18, ncol=2,nrow=2)
+```
+
+First Slide
+========================================================
+
+Air Quality
+
+Initial Presentation
+
+Res
+========================================================
+
+```{r, echo=FALSE}
+air_all$fDays = factor(air_all$Days)
+air_all$fHour = factor(air_all$Hour)
+air_all$fMonth = factor(air_all$Month)
+air_all$fSeason = factor((air_all$Month + 1) %/% 4)
+air_all$fDay = factor(air_all$Day)
+fit2 <- lmer(Value~Site + (Site|fDay),data=air_all)
+# summary(fit2)
+# anova(fit2)
+air_all$fitted = fitted(fit2)
+air_all$resid = resid(fit2)
+ggplot(data=air_all, y=resid(fit2),aes(x=fitted,y = resid, color = fSeason))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Residuals")+
+            facet_grid(Site ~ .)
+
+# ggplot(data=air_all, y=resid(fit2),aes(x=resid))+ 
+#                 geom_histogram(aes(fill=fMonth), binwidth=10)+
+#                 ggtitle("Residuals")+
+#                 facet_grid(Site ~ .)
+```
+
+
