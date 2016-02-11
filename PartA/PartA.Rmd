@@ -3,7 +3,7 @@ title: "PartA"
 output: html_document
 ---
 
-
+# Updated Feb.11,2016
 
 ```{r}
 suppressPackageStartupMessages({
@@ -46,6 +46,8 @@ air_18 <-air_all[air_all$Hour==18,]
 ```
 
 ####txx_p1.png####
+- Raw data
+
 ```{r}
 p_air0<-ggplot(data = air_0, aes(x=Days,y = Value,color = Site)) + geom_line() + 
       geom_point() + ggtitle("Hour 0")
@@ -64,8 +66,12 @@ grid.arrange(p_air0,p_air8,p_air12, p_air18, ncol=2,nrow=2)
 ```
 
 ####txx_p2.png####
+
+- Missing values deleted
+
 ```{r}
 air_all <-air_all[air_all$Value!=-999,]
+
 air_0 <-air_all[air_all$Hour==0,]
 air_8 <-air_all[air_all$Hour==8,]
 air_12 <-air_all[air_all$Hour==12,]
@@ -90,6 +96,9 @@ grid.arrange(p_air0,p_air8,p_air12, p_air18, ncol=2,nrow=2)
 
 
 ####txx_p3.png####
+
+-First 50 days
+
 ```{r}
 p1<-ggplot(data = air_0[air_0$Days <51,], 
                 aes(x=Days,y = Value,color = Site))+ 
@@ -116,6 +125,9 @@ grid.arrange(p1,p2,p3,p4, ncol=2,nrow=2)
 ```
 
 ####txx_p4.png####
+
+-First 100 days
+
 ```{r}
 p1<-ggplot(data = air_0[air_0$Days <101,], 
                 aes(x=Days,y = Value,color = Site))+ 
@@ -142,6 +154,8 @@ grid.arrange(p1,p2,p3,p4, ncol=2,nrow=2)
 
 ####txx_p5.png####
 
+-50- 100
+
 ```{r}
 p1<-ggplot(data = air_0[air_0$Days <101 &air_0$Days >50,], 
                 aes(x=Days,y = Value,color = Site))+ 
@@ -164,4 +178,110 @@ p4<-ggplot(data = air_0[air_18$Days <101 &air_18$Days >50,],
                 geom_smooth(se = FALSE)+ ggtitle("Hour 18 (no line)")
 
 grid.arrange(p1,p2,p3,p4, ncol=2,nrow=2)
+```
+
+
+###Additional plots###
+
+
+- A First 50 days with CI
+
+```{r}
+p1<-ggplot(data = air_0[air_0$Days <51,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth()+ ggtitle("Hour 0 (no line)")
+
+p2<-ggplot(data = air_8[air_8$Days <51,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth()+ ggtitle("Hour 8 (no line)")
+
+p3<-ggplot(data = air_12[air_12$Days <51,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth()+ ggtitle("Hour 12 (no line)")
+
+p4<-ggplot(data = air_0[air_18$Days <51,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth()+ ggtitle("Hour 18 (no line)")
+
+grid.arrange(p1,p2,p3,p4, ncol=2,nrow=2)
+
+#Hour 0 Separated
+ggplot(data = air_0[air_0$Days <51,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+ facet_wrap(~Site)+
+                geom_smooth()+ ggtitle("Hour 0 Separated(with CI)")
+
+
+```
+
+- B  Days 0-330 curve for the ggplot with 5 separate city plots 
+
+```{r}
+#24 hours
+ggplot(data = air_all, 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+ facet_wrap(~Site)+
+                geom_smooth()+ ggtitle("24 Hour Separated")
+
+```
+
+- C Different intervals
+
+**1 101-150**
+```{r}
+
+p1<-ggplot(data = air_0[air_0$Days <151 &air_0$Days >100,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 0 (no line)")
+
+p2<-ggplot(data = air_8[air_8$Days <151 &air_8$Days >100,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 8 (no line)")
+
+p3<-ggplot(data = air_12[air_12$Days <151 &air_12$Days >100,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 12 (no line)")
+
+p4<-ggplot(data = air_0[air_18$Days <151 &air_18$Days >100,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 18 (no line)")
+
+grid.arrange(p1,p2,p3,p4, ncol=2,nrow=2)
+```
+
+
+
+**2 151-200**
+```{r}
+p1<-ggplot(data = air_0[air_0$Days <201 &air_0$Days >150,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 0 (no line)")
+
+p2<-ggplot(data = air_8[air_8$Days <201 &air_8$Days >150,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 8 (no line)")
+
+p3<-ggplot(data = air_12[air_12$Days <201 &air_12$Days >150,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 12 (no line)")
+
+p4<-ggplot(data = air_0[air_18$Days <201 &air_18$Days >150,], 
+                aes(x=Days,y = Value,color = Site))+ 
+                geom_point(aes(shape = Site ) )+
+                geom_smooth(se = FALSE)+ ggtitle("Hour 18 (no line)")
+
+grid.arrange(p1,p2,p3,p4, ncol=2,nrow=2)
+
+
 ```
