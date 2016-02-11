@@ -1,0 +1,49 @@
+---
+title: "PROJECT 1 Part II"
+author: "Ruoying jiang, Shenqian Chen"
+output: slidy_presentation
+ 
+---
+
+## Procedure:
+###Key: Figure out the relationship of PM2.5 with meteorological variables  
+Meteorological Variables(Daily): Mean.Temperature,Mean.Dewpoint,Mean.Humidity,Mean.SeaLevelPressure,Mean.VisibilityMile,Mean.WindSpeed  
+
+* Object of Study: Daily Average PM2.5 (Mean.PM2.5)) during 2015 of Beijing 
+
+Data Source1: http://www.wunderground.com/history/ (Meteorological data)  
+Data Source2: http://www.stateair.net/web/historical/1/1.html (PM2.5 data)  
+
+- Step 1 Combine meteorological data with the Mean.PM2.5 data.
+- Step 2 Fit regression model without days indicate significant high values of PM2.5(>250).
+- Step 3 Do specific reaserch&analysis for days that PM2.5>250 (outliers).
+
+## R Code and Output 1 
+####(1)First,Fit linear regression for mean(pm2.5) versus meterological variables with lag factor.  
+```{r}
+beijing<-read.csv("pmn.csv",header = T)
+require(dplyr)
+require(ggplot2)
+new.dd<-beijing%>%filter(mean.pm<250)
+fit1<-lm(mean.pm~lag(mean.pm,1)+Mean.TemperatureF+MeanDew.PointF+Mean.Humidity+Mean.VisibilityMiles+Mean.Wind.SpeedMPH,data=new.dd)
+summary(fit1)
+``` 
+* The average PM2.5 for each day: Negative Relationship with Mean.Temperature, Mean.Humidity,Mean.VisibilityMiles, Mean.Wind.SpeedMPH.  
+* The average PM2.5 for each day: positive Relationship with Mean(PM2.5) one day bofore, MeanDew.point. 
+
+## Plots(for data without outliers):
+```{r, echo=FALSE}
+ggplot(data=beijing,aes(x=1:365,y=mean.pm))+geom_point()+geom_hline(yintercept=250,color="red")+ggtitle("avarage pm2.5 each day in 2015")
+ggplot(fortify(fit1),aes(x=.fitted,y=.resid)) + geom_point() + geom_hline(yintercept=0)+geom_smooth(se=F,lwd=1)+ggtitle("residuals Plot")
+new.dd$fit1 <- predict.lm(fit1, newdata=new.dd)
+gg <- ggplot(new.dd)+geom_point(aes(x=mean.pm, y =fit1), size = 2, color = "blue")
+gg + geom_smooth(data=new.dd, aes(x=mean.pm, y=fit1), size = 1.5, color = "red", se = TRUE, method="lm")+ggtitle("fitted model of pm2.5")
+```
+
+## R Code and Output 2  
+####(2)Employ daily data to analysize outliers(mean(pm2.5)>250)
+```{r}
+out.dd<-beijing%>%filter(mean.pm>250)
+out.dd%>%select(Month,Day,mean.pm)
+
+``` 
