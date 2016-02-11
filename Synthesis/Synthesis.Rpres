@@ -115,16 +115,33 @@ Part I (Xingxing)
 Part II (Shenquian/Ruoying)
 ========================================================
 - Step 1 Combine meteorological data with the Mean.PM2.5 data.
-
-
-Part II (Shenquian/Ruoying)
-========================================================
 - Step 2 Fit regression model without days indicate significant high values of PM2.5(>250).
-
+- Step 3 Do specific reaserch&analysis for days that PM2.5>250 (outliers).
 
 Part II (Shenquian/Ruoying)
 ========================================================
-- Step 3 Do specific reaserch&analysis for days that PM2.5>250 (outliers).
+![Regression](./Synthesis-figure/B_1.png)
+
+Part II (Shenquian/Ruoying)
+========================================================
+![](./Synthesis-figure/B_3.png)
+
+Part II (Shenquian/Ruoying)
+========================================================
+![Residual plot](./Synthesis-figure/B_4.png)
+
+Part II (Shenquian/Ruoying)
+========================================================
+![Fitted model](./Synthesis-figure/B_5.png)
+
+Part II (Shenquian/Ruoying)
+========================================================
+![Outliers](./Synthesis-figure/B_6.png)
+
+Part II (Shenquian/Ruoying)
+========================================================
+Next step:Check if there is a similar pattern across the years
+          Find factors related to outliers
 
 Part III (Alex)
 ========================================================
