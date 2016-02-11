@@ -59,7 +59,7 @@ This data (from the site "Weather Underground")
 contains temperature, dew-point, humidity, sea-level
 pressure, visibility, and wind speed.
 
-Using Meterological Data (Shenquian/Ruoying)
+Using Meterological Data (Shengqian/Ruoying)
 ========================================================
 - Step 1 Combine meteorological data with the Mean.PM2.5 data.
 - Step 2 Fit regression model without days indicate significant high values of PM2.5(>250).
@@ -94,16 +94,16 @@ Part I (Xingxing) Example Plot 1
 ========================================================
 ![HOur 0](./Synthesis-figure/w2_4.png)
 
-Part I (Xingxing) Example Plot 2
+Part I  Example Plot 2
 ========================================================
 ![Trend Lines](./Synthesis-figure/w2_3.png)
 
-Part I (Xingxing) Raw data plot
+Part I  Raw data plot
 ========================================================
 How do we deal with missing values? 
 ![Missing Data](./Synthesis-figure/txx_p1.png)
 
-Part I (Xingxing)
+Part I 
 ========================================================
 ![Cleaned](./Synthesis-figure/txx_p2.png)
 (delete 1483 missing values [after sending them to -999])
@@ -112,19 +112,36 @@ Part I (Xingxing)
 ========================================================
 ![More](./Synthesis-figure/txx_p3.png)
 
-Part II (Shenquian/Ruoying)
+Part II (Shengqian/Ruoying)
 ========================================================
 - Step 1 Combine meteorological data with the Mean.PM2.5 data.
-
-
-Part II (Shenquian/Ruoying)
-========================================================
 - Step 2 Fit regression model without days indicate significant high values of PM2.5(>250).
-
-
-Part II (Shenquian/Ruoying)
-========================================================
 - Step 3 Do specific reaserch&analysis for days that PM2.5>250 (outliers).
+
+Part II 
+========================================================
+![Regression](./Synthesis-figure/B_1.png)
+
+Part II 
+========================================================
+![](./Synthesis-figure/B_3.png)
+
+Part II 
+========================================================
+![Residual plot](./Synthesis-figure/B_4.png)
+
+Part II 
+========================================================
+![Fitted model](./Synthesis-figure/B_5.png)
+
+Part II 
+========================================================
+![Outliers](./Synthesis-figure/B_6.png)
+
+Part II 
+========================================================
+Next step:Check if there is a similar pattern across the years
+          Find factors related to outliers
 
 Part III (Alex)
 ========================================================
@@ -160,5 +177,5 @@ More useful for ggplot/organization than for stats
 in this project (1 object instead of 5)
 
 
-Future Directions (Anyone)
+Question
 ========================================================
