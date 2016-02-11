@@ -58,7 +58,8 @@ The U.S. Department of State Data Use Statement at http://www.stateair.net/web/h
 
 2)Meteorological Data (7 variables) 
 
-!!!Shengqian: Fill this part 
+Data Source1: http://www.wunderground.com/history/ (Meteorological data)  
+Data Source2: http://www.stateair.net/web/historical/1/1.html (PM2.5 data)
 
 (Alex: One or Two pages should be enough for the part of background and data source )
 
