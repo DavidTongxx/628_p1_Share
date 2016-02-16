@@ -95,3 +95,10 @@ I will uploaded my part tonight. For Part 2, the deadline is Tuesday Night. Alex
 Good luck
 
 Xingxing Feb. 8
+
+# Draft Writeup for week 5
+
+-Plan for the draft due this Thursday
+
+
+
