@@ -100,5 +100,9 @@ Xingxing Feb. 8
 
 -Plan for the draft due this Thursday
 
+Xing  Part I Raw Dataset Exploration
+Shengqian and Jiang  Part II  Regression and Outlier Handling
+Alex  Introduction and Part_III Future Plan
 
+by Xingxing Feb.18 Morning
 
