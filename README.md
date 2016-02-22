@@ -114,4 +114,58 @@ Organization: UW-Madison
 Date	Start	End	Library / Building	Room	Status
 2/22/2016	1:30 PM	2:30 PM	WENDT	Wendt 137 McBurney Study Room	Reserved
 
+#Feb. 22 Discussion
+
+
+##Part I General questions:
+
+Draft Report Requirement
+
+The final report should have the following elements:
+!!title
+list of team members
+!!abstract/summary
+!!introductory section with statement of problem/key questions and motivation
+[txx: Brief intro. about each part ]
+
+
+plan section (materials & methods) that describes what you do (this could be early or toward the end -- style decision)
+results, including plots that show the data interpretation / conclusions
+
+Your report needs to have proper citations and a Conclusion/Discussion/Future Work section. [Cite sources clearly where you use them, using footnotes or Reference section at  the end.]
+
+!!!references / citations
+[txx: haven't done yet  Data souce -> 1 person, Alex Reference]
+
+Suggestion from Prof.
+(As I pointed out, it is often better to show data that inform a model than to concentrate on significance of results. Your audience is more interested in what you found and why it is believable, rather than how. However, it is important to have enough detail about how so that your work could be reproduced and your reasoning can be debated.)
+
+##Part II General questions:
+
+What would you do if you had a lot more time?
+[txx: Alex data source we haven't useed(http://rda.ucar.edu/datasets/ds091.0/#! description)  Multilevel Model- hierarchical model for day and hour effects]
+
+
+What expertise would you need on your team that would deepen your results?
+Think about your audience. In real setting, there will be a mix of technical  (quantitative) and “big picture” (manager) people reading your report. Give them each something. You need enough technical detail to reproduce your work, and enough context and explanation for a manager to get the key ideas.
+[txx part]
+
+
+##Part III Final Report
+
+All: Write a 1-page report about how the team process worked for you. What was challenging? What was unexpected? What was fun?
+One of you: Append your 1-page to the report and turn in together.
+Make sure your methods are clear. Use graphs to illustrate relationships (scatter plots!) and annotate these graphs.
+[txx: Alex overall editing]
+
+##Part IV Deadlines: 
+1. Deadline for each separate part (Send to Alex forward to team) and one 1-page report about personal duty(Send to Shengqian forward to team)
+Tues. 2/23  9:00pm
+
+2. Deadline for final draft (Alex forward to team)
+Wed. 2/24  9:00pm
+
+Feb. 22
+Xingxing 
+
 
