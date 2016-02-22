@@ -106,3 +106,12 @@ Alex  Introduction and Part_III Future Plan
 
 by Xingxing Feb.18 Morning
 
+#Feb. 22 Discussion 
+Topic :P1_Final Report
+
+Reservation Id: 161505
+Organization: UW-Madison
+Date	Start	End	Library / Building	Room	Status
+2/22/2016	1:30 PM	2:30 PM	WENDT	Wendt 137 McBurney Study Room	Reserved
+
+
