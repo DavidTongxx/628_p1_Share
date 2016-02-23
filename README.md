@@ -159,13 +159,13 @@ Make sure your methods are clear. Use graphs to illustrate relationships (scatte
 [txx: Alex overall editing]
 
 ##Part IV Deadlines: 
-1. Deadline for each separate part (Send to Alex forward to team) and one 1-page report about personal duty(Send to Shengqian forward to team)
+1) Deadline for each separate part (Send to Alex forward to team) and one 1-page report about personal duty(Send to Shengqian forward to team)
 Tues. 2/23  9:00pm
-
 Shengqian will send the combination of 4 people's duty report to Alex by 7:00pm Wed.
 
 
-2. Deadline for final draft (Alex forward to team )
+
+2) Deadline for final draft (Alex forward to team )
 Wed. 2/24  9:00pm
 
 Feb. 22
