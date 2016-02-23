@@ -135,7 +135,7 @@ results, including plots that show the data interpretation / conclusions
 Your report needs to have proper citations and a Conclusion/Discussion/Future Work section. [Cite sources clearly where you use them, using footnotes or Reference section at  the end.]
 
 !!!references / citations
-[txx: haven't done yet  Data souce -> 1 person, Alex Reference]
+[txx: haven't done yet  Data souce -> 1 person, Alex Reference ]
 
 Suggestion from Prof.
 (As I pointed out, it is often better to show data that inform a model than to concentrate on significance of results. Your audience is more interested in what you found and why it is believable, rather than how. However, it is important to have enough detail about how so that your work could be reproduced and your reasoning can be debated.)
@@ -162,7 +162,10 @@ Make sure your methods are clear. Use graphs to illustrate relationships (scatte
 1. Deadline for each separate part (Send to Alex forward to team) and one 1-page report about personal duty(Send to Shengqian forward to team)
 Tues. 2/23  9:00pm
 
-2. Deadline for final draft (Alex forward to team)
+Shengqian will send the combination of 4 people's duty report to Alex by 7:00pm Wed.
+
+
+2. Deadline for final draft (Alex forward to team )
 Wed. 2/24  9:00pm
 
 Feb. 22
