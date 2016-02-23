@@ -145,7 +145,7 @@ Suggestion from Prof.
 ##Part II General questions:
 
 What would you do if you had a lot more time?
-[txx: Alex data source we haven't useed(http://rda.ucar.edu/datasets/ds091.0/#! description)  Multilevel Model- hierarchical model for day and hour effects]
+[txx: Alex 1)data source we haven't used(http://rda.ucar.edu/datasets/ds091.0/#! description)  2)Multilevel Model- hierarchical model for day and hour effects]
 
 
 What expertise would you need on your team that would deepen your results?
