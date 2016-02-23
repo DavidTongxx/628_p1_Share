@@ -116,6 +116,8 @@ Date	Start	End	Library / Building	Room	Status
 
 #Feb. 22 Discussion
 
+all requirements from course's website. 
+
 
 ##Part I General questions:
 
