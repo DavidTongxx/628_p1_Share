@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.9.14)  25 FEB 2016 06:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.9.14)  25 FEB 2016 10:09
 entering extended mode
 **"Final Report.tex"
 ("Final Report.tex"
@@ -526,86 +526,95 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {C:/Users/Alex/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2 <./Parade
 BlueBeijing.png>]
-
-LaTeX Warning: Citation `NOAA2' on page 3 undefined on input line 161.
-
 <Figure1-1.png, id=23, 266.49562pt x 201.00093pt>
 File: Figure1-1.png Graphic file (type png)
  <use Figure1-1.png>
-Package pdftex.def Info: Figure1-1.png used on input line 178.
+Package pdftex.def Info: Figure1-1.png used on input line 160.
 (pdftex.def)             Requested size: 334.60422pt x 252.39453pt.
- [3]
-<Figure1-2.png, id=27, 240.9pt x 201.00093pt>
+
+<Figure1-2.png, id=24, 240.9pt x 201.00093pt>
 File: Figure1-2.png Graphic file (type png)
  <use Figure1-2.png>
-Package pdftex.def Info: Figure1-2.png used on input line 187.
+Package pdftex.def Info: Figure1-2.png used on input line 169.
 (pdftex.def)             Requested size: 334.60422pt x 279.21257pt.
 
-<Figure1-3.png, id=28, 240.9pt x 201.00093pt>
+<Figure1-3.png, id=25, 240.9pt x 201.00093pt>
 File: Figure1-3.png Graphic file (type png)
  <use Figure1-3.png>
-Package pdftex.def Info: Figure1-3.png used on input line 195.
+Package pdftex.def Info: Figure1-3.png used on input line 177.
 (pdftex.def)             Requested size: 334.60422pt x 279.21257pt.
- [4 <./Figure1-1.png>] [5 <./Figure1-2.png>]
-<Figure2-1.png, id=36, 441.14813pt x 354.57469pt>
+ [3] [4 <./Figure1-1.png>] <Figure2-1.png, id=33, 441.14813pt x 354.57469pt>
 File: Figure2-1.png Graphic file (type png)
- <use Figure2-1.png>
-Package pdftex.def Info: Figure2-1.png used on input line 220.
+
+<use Figure2-1.png>
+Package pdftex.def Info: Figure2-1.png used on input line 202.
 (pdftex.def)             Requested size: 250.95476pt x 201.70389pt.
- [6 <./Figure1-3.png>]
-Overfull \hbox (7.69856pt too wide) in paragraph at lines 231--244
+ [5 <./Figure1-2.png>]
+Overfull \hbox (7.69856pt too wide) in paragraph at lines 213--226
 [][] 
  []
 
-<Figure2-2.png, id=40, 441.14813pt x 354.57469pt>
+[6 <./Figure1-3.png> <./Figure2-1.png>]
+<Figure2-2.png, id=41, 441.14813pt x 354.57469pt>
 File: Figure2-2.png Graphic file (type png)
  <use Figure2-2.png>
-Package pdftex.def Info: Figure2-2.png used on input line 261.
+Package pdftex.def Info: Figure2-2.png used on input line 243.
 (pdftex.def)             Requested size: 209.12683pt x 168.08386pt.
 
-<Figure2-3.png, id=41, 441.14813pt x 354.57469pt>
+<Figure2-3.png, id=42, 441.14813pt x 354.57469pt>
 File: Figure2-3.png Graphic file (type png)
  <use Figure2-3.png>
-Package pdftex.def Info: Figure2-3.png used on input line 266.
+Package pdftex.def Info: Figure2-3.png used on input line 248.
 (pdftex.def)             Requested size: 209.12683pt x 168.08386pt.
- [7 <./Figure2-1.png>] <Figure2-4.png, id=49, 502.87875pt x 354.57469pt>
+
+<Figure2-4.png, id=43, 502.87875pt x 354.57469pt>
 File: Figure2-4.png Graphic file (type png)
-
-<use Figure2-4.png>
-Package pdftex.def Info: Figure2-4.png used on input line 276.
+ <use Figure2-4.png>
+Package pdftex.def Info: Figure2-4.png used on input line 258.
 (pdftex.def)             Requested size: 250.95476pt x 176.94604pt.
- <Figure2-5.png, id=50, 216.05719pt x 234.1247pt>
-File: Figure2-5.png Graphic file (type png)
 
-<use Figure2-5.png>
-Package pdftex.def Info: Figure2-5.png used on input line 284.
+<Figure2-5.png, id=44, 216.05719pt x 234.1247pt>
+File: Figure2-5.png Graphic file (type png)
+ <use Figure2-5.png>
+Package pdftex.def Info: Figure2-5.png used on input line 266.
 (pdftex.def)             Requested size: 250.95476pt x 271.95279pt.
- [8 <./Figure2-2.png> <./Figure2-3.png> <./Figure2-4.png>]
-Overfull \hbox (26.1334pt too wide) in paragraph at lines 291--326
+ [7 <./Figure2-2.png> <./Figure2-3.png>] [8 <./Figure2-4.png> <./Figure2-5.png>
+]
+Overfull \hbox (26.1334pt too wide) in paragraph at lines 273--308
 [][] 
  []
 
 <Figure2-6.png, id=54, 216.05719pt x 179.16937pt>
 File: Figure2-6.png Graphic file (type png)
  <use Figure2-6.png>
-Package pdftex.def Info: Figure2-6.png used on input line 334.
+Package pdftex.def Info: Figure2-6.png used on input line 316.
 (pdftex.def)             Requested size: 250.95476pt x 208.1182pt.
- [9 <./Figure2-5.png>] <Figure2-7.png, id=58, 216.05719pt x 179.16937pt>
+ [9]
+<Figure2-7.png, id=58, 216.05719pt x 179.16937pt>
 File: Figure2-7.png Graphic file (type png)
-
-<use Figure2-7.png>
-Package pdftex.def Info: Figure2-7.png used on input line 345.
+ <use Figure2-7.png>
+Package pdftex.def Info: Figure2-7.png used on input line 327.
 (pdftex.def)             Requested size: 250.95476pt x 208.1182pt.
- [10] <Figure2-8.jpg, id=62, 505.89pt x 304.13625pt>
-File: Figure2-8.jpg Graphic file (type jpg)
 
-<use Figure2-8.jpg>
-Package pdftex.def Info: Figure2-8.jpg used on input line 356.
+<Figure2-8.jpg, id=59, 505.89pt x 304.13625pt>
+File: Figure2-8.jpg Graphic file (type jpg)
+ <use Figure2-8.jpg>
+Package pdftex.def Info: Figure2-8.jpg used on input line 338.
 (pdftex.def)             Requested size: 250.95476pt x 150.87508pt.
- [11 <./Figure2-6.png> <./Figure2-7.png>] [12 <./Figure2-8.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 429--430
-[]\OT1/cmr/m/n/10.95 National Cen-ters for En-vi-ron-men-tal Pre-dic-tion/Natio
-nal Weather Ser-
+ [10 <./Figure2-6.png>] [11 <./Figure2-7.png> <./Figure2-8.jpg>] [12]
+
+LaTeX Warning: Citation `NOAA2' on page 13 undefined on input line 413.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 433--435
+[]\OT1/cmr/m/n/9 ``Fact Sheet,'' \OT1/cmr/m/it/9 U.S. De-part-ment of State\OT1
+/cmr/m/n/9 . Ac-cessed from web on Feb. 24, 2016.
+ []
+
+
+Underfull \hbox (badness 1231) in paragraph at lines 436--438
+[]\OT1/cmr/m/n/9 ``Data Use State-ment,'' \OT1/cmr/m/it/9 U.S. De-part-ment of 
+State\OT1/cmr/m/n/9 . Ac-cessed from web on Feb. 24, 2016.
  []
 
 [13] [14] [15] ("Final Report.aux")
@@ -617,11 +626,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3958 strings out of 493673
- 57914 string characters out of 3145583
- 135901 words of memory out of 3000000
- 7255 multiletter control sequences out of 15000+200000
- 14905 words of font info for 50 fonts, out of 3000000 for 9000
+ 3962 strings out of 493673
+ 57950 string characters out of 3145583
+ 134901 words of memory out of 3000000
+ 7257 multiletter control sequences out of 15000+200000
+ 15549 words of font info for 52 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  44i,11n,43p,928b,350s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Progra
@@ -633,14 +642,16 @@ i7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Pr
 ogram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/M
 iKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss
-10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/P
-rogram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/font
-s/type1/public/amsfonts/cm/cmti7.pfb>
-Output written on "Final Report.pdf" (15 pages, 625491 bytes).
+sfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9
+.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Pro
+gram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmti7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmti9.pfb>
+Output written on "Final Report.pdf" (15 pages, 664780 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
+ 137 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

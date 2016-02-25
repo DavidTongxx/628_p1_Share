@@ -134,7 +134,7 @@ not only what we could find in the State Department's data but also other public
 In particular, we decided to look at time-and-location indexed, meteorological, and climatological data,
 in order to figure out which obvious factors might play a role in successfully understanding air pollution.
 
-More information will be provided in the next section on Data Sources, 
+More information will be provided in the section on Data Sources, 
 but, for some basic reference points, all our air quality data is measured in terms of 
 \(PM_{2.5}\), which measures the 
 total mass of fine particles in the atmosphere (micrograms
@@ -143,25 +143,7 @@ Good or Moderate, while readings between 35.4 to 55.4 are ``Unhealthy for Sensit
 55.4 to 150.4 is Unhealthy, up to 250.4 is Very Unhealthy, and anything above 250.4  \(\mu g/m^3\)
 is considered Hazardous.
 
-\subsection{Data Sources}
-
-As mentioned previously, the United States Department of State measures
-air quality data at five locations---the U.S. Embassy in
-Beijing, and the Consulates in Chengdu, Guangzhou,
-Shanghai, and Shenyang. More detailed information about
-the files and the data use statement can be found at www.stateair.net\cite{StateAirFS, StateAirDU}.
-
-We obtained meteorological data for Beijing (from the site "Weather Underground'' (at http://www.wunderground.com))
-which contains temperature, dew-point, humidity, sea-level, pressure, visibility, and wind speed. This will be
-explored in Part II.
-
-A dataset we weren't able to use---but is worth mentioning---
-is the NCEP/DOE AMIP-II Reanalysis (Reanalysis-2) dataset 
-from the National Oceanic and Atmospheric Administration
-(NOAA)\cite{NOAA, NOAA2}, provided through 
-the National Center for Atmospheric Research (NCAR). This will be explained in more detail in Part 3.
-
-\section{Part 1 - Exploratory Plotting}
+\section{Exploratory Plotting}
 
 	As mentioned above, our dataset comes from the U.S. Department of State in the Embassy and Consulates of five major cities in China. Data is measured in terms of the total mass of particulate matter (particles with size 2.5 micrometers or less, which we denote as " \(PM_{2.5}\)"). The  \(PM_{2.5}\) data is hourly over the course of 2015, so there are 24 data points in each day for each of the five cities.
 
@@ -201,17 +183,17 @@ Figure 3 indicates that for the given hour and day period, Shanghai and Guangzho
 
 \newpage
 
-\section{Part 2 - Regression Fitting and Outlier Analysis}
+\section{Regression Fitting and Outlier Analysis}
 \subsection{Regression of meteorological factors on daily average \(PM_{2.5}\)}
 
 In general, academic papers\cite{Chatani11, Tai10, Pohjola02} suggest that three major factors contribute to the concentration of \(PM_{2.5}\): 1. domestic sources of emissions, 2. foreign sources, and 3. meteorological conditions.
 
 As Pohjola \textit{et al.} note: “[M]eteorological conditions can largely diffuse, dilute, and accumulate pollutants.”\cite{Pohjola02}. Tai \textit{et al.} make an even stronger claim: “We find that daily variation in meteorology as described by the multiple linear regression can explain up to 50\% of \(PM_{2.5}\) variability with temperature, relative humidity, precipitation, and circulation all being important predictors.”\cite{Tai10}.
  
-Thus, in the second part of our project, we explored the relationship between meteorological variables and daily mean \(PM_{2.5}\) values for each day in 2015. 
-Based on the analysis in Part 1 on the first 50 days of 2015, Beijing---the capital and political center of China---is somewhat outstanding in its \(PM_{2.5}\) data, presenting a higher level of emissions in general than in the other four cities.
+Thus, in the second part of our project, we explore the relationship between meteorological variables and daily mean \(PM_{2.5}\) values for each day in 2015. 
+Based on the analysis in the Exploratory Plotting section on the first 50 days of 2015, Beijing---the capital and political center of China---is somewhat outstanding in its \(PM_{2.5}\) data, presenting a higher level of emissions in general than in the other four cities.
 
-As mentioned in the Data Sources section, all the meteorological data we obtained is from the Weather Underground website mentioned in the Data Sources section above. So that our metereological data accords with our air pollution data, we consider the mean daily value for all of our factors (temperature, dew point, humidity, sea level pressure, and wind speed). We have this data for each day from January 1 to December 31, 2015. In order to take the time series of our data into account, we also include the prior day's mean \(PM_{2.5}\).
+As mentioned in the Data Sources section, all the meteorological data we obtained is from the Weather Underground website. So that our metereological data accords with our air pollution data, we consider the mean daily value for all of our factors (temperature, dew point, humidity, sea level pressure, and wind speed). We have this data for each day from January 1 to December 31, 2015. In order to take the time series of our data into account, we also include the prior day's mean \(PM_{2.5}\).
 
 Once we'd collected this data, we combined the meteorological data with the daily average\(PM_{2.5}\) data, then attempted to fit a regression model which would explain air pollution on each day. However, after drawing a graph of daily average \(PM_{2.5}\) during 2015, we noticed that the daily \(PM_{2.5}\) means have considerably higher means and a large number of outliers at the beginning and end of the year. In order to minimize the impacts of these extreme outliers on our final model, we decided to start by focusing only on days with relatively normal levels of \(PM_{2.5}\). According to the new air quality standards in China, we delete days that have average \(PM_{2.5}\) higher than 250\(\mu g/m^3\), which represents a day with severe air pollution. For 2015, Beijing has 18 days that the \(PM_{2.5}\) is larger than \(\mu g/m^3\).
 
@@ -395,9 +377,9 @@ air pollution.
 The Reanalysis dataset likely would have been an undertaking of several months, if not years.
 Much of the data was heavily nested and hard to access, much of it was missing, sensors seemed clustered around certain longitude lines,
 many of the naming schemas were unclear, and overall, it would probably take a large amount of time and effort 
-in conjunction with a professional climatologist to understand exactly how to use it.
+in conjunction with an expert to understand exactly how to use it.
 
-On the other hand, the data is right there, for anyone who knows how to interpret it.
+On the other hand, for anyone who \emph{does} know how to use it, all relevant information is available.
 
 \subsection{Meteorological Regression}
 
@@ -414,6 +396,23 @@ We would also like to explore the specific relationship between \(PM_{2.5}\) con
 
 Moreover, we'd like to try to analyze the results using spatial data in order to compare the differences between regressions among cities.
 
+\section{Data Sources}
+
+As mentioned previously, the United States Department of State measures
+air quality data at five locations---the U.S. Embassy in
+Beijing, and the Consulates in Chengdu, Guangzhou,
+Shanghai, and Shenyang. More detailed information about
+the files and the data use statement can be found at www.stateair.net\cite{StateAirFS, StateAirDU}.
+
+For the regression and outlier analyses, we obtained our meteorological data for Beijing (from the site "Weather Underground'' (at http://www.wunderground.com))
+which contains temperature, dew-point, humidity, sea-level, pressure, visibility, and wind speed. This was used in our regression.
+
+A dataset we weren't able to use---but is worth mentioning---
+is the NCEP/DOE AMIP-II Reanalysis (Reanalysis-2) dataset 
+from the National Oceanic and Atmospheric Administration
+(NOAA)\cite{NOAA, NOAA2}, provided through 
+the National Center for Atmospheric Research (NCAR). This was described in more detail in Part 3.
+
 \subsection{Outliers:} 
 
 For extreme air pollution events--besides sea level pressure, there must be other factors that will explain part of it, like coal usage during heating time if we can get the data. It’s a cumulative process that eventually result in an outlier. One idea is to find some relationship between one outlier and several days before it (as opposed to just the one-day lagged mean), and see if there is a trend or pattern for the outliers. 
@@ -425,6 +424,7 @@ For extreme air pollution events--besides sea level pressure, there must be othe
 
 
 \begin{thebibliography}{1}
+\footnotesize
 
 \bibitem{NOAA} National Centers for Environmental Prediction/National Weather Service/NOAA/U.S. Department of Commerce. 2000. NCEP/DOE Reanalysis 2 (R2). Research Data Archive at the National Center for Atmospheric Research, Computational and Information Systems Laboratory. http://rda.ucar.edu/datasets/ds091.0/. Accessed Feb. 24, 2015.
 
@@ -480,4 +480,28 @@ Hawkins, Timothy W., and Lisa A. Holland. "Synoptic and local weather conditions
 
 \end{thebibliography}
 
+
+\newpage
+
+
+
+\textbf{Personal Thinking about Project One}
+
+\textit{Xingxing Tong}
+
+Personally, I really like this kind of cooperation format between teammates. We created our own GitHub repository at the beginning of this semester and put each week’s outcomes into different files of the repository. We keep updating the README file to record important group discussions. Group members’ different duties and deadlines can also be found in our README file. I reckon this method can improve our efficiency. Building this structure is quite time consuming at the beginning. However, once we got used to this pattern it does save us a lot of time in general. One of my major duties in this team is to create an efficient way for our group working via GitHub. It seems that this part of duty works pretty well for now.
+
+There two major challenges in the process. One of them is how to use GitHub to conduct teamwork efficiently. I mentioned our exploration in this area above.
+
+Another challenge is how to combine our team together and make the best of our diverse background. Since each of our team member has his/her own academic background, strength and weakness. Given the main topic of project is the air quality of China, the question we wish to answer and methods we want to use may vary from person to person. How to combine these three or four separate parts together in a natural way? It is a tough question for us.
+
+Our solution is diving our report into three part. In the part one, I just did a few basic visualization exploration based on the raw dataset providing our audience an intuitive idea about why we are so obsessed with the air quality situation in Beijing among five different major cities in China. Quantitative analysis have been done in the second part by Jiang and Shengqian. Their aim is to explain the PM 2.5 of Beijing in the “statistical” way. Alex reckons that hierarchical model is a good way to reflect the effects of days and hours upon PM 2.5. However, building this model is not an easy job for us. So we put his model in our further exploration part. We hope this structure of our report can show readers the different levels of exploration in our project.
+
+This project starts at the first week and it lasts almost five weeks. I really enjoy this journey. When I look at our repository, I can find the different timelines of our project. It shows me how we build our final report through one small step by another gradually. It is amazing!
+
+
+
+\emph{NOTE:} The personal reports of other team members can be found in their own course systems.
 \end{document}
+
+
