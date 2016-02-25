@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.9.14)  25 FEB 2016 10:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.9.14)  25 FEB 2016 10:28
 entering extended mode
 **"Final Report.tex"
 ("Final Report.tex"
@@ -435,11 +435,7 @@ Package tocloft Info: The document has section divisions on input line 44.
 \cftbeforesubtabskip=\skip97
 \cftsubtabindent=\skip98
 \cftsubtabnumwidth=\skip99
-) ("Final Report.aux"
-
-LaTeX Warning: Label `NOAA' multiply defined.
-
-)
+) ("Final Report.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
 LaTeX Font Info:    ... okay on input line 64.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
@@ -602,10 +598,6 @@ File: Figure2-8.jpg Graphic file (type jpg)
 Package pdftex.def Info: Figure2-8.jpg used on input line 338.
 (pdftex.def)             Requested size: 250.95476pt x 150.87508pt.
  [10 <./Figure2-6.png>] [11 <./Figure2-7.png> <./Figure2-8.jpg>] [12]
-
-LaTeX Warning: Citation `NOAA2' on page 13 undefined on input line 413.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 433--435
 []\OT1/cmr/m/n/9 ``Fact Sheet,'' \OT1/cmr/m/it/9 U.S. De-part-ment of State\OT1
 /cmr/m/n/9 . Ac-cessed from web on Feb. 24, 2016.
@@ -617,39 +609,32 @@ Underfull \hbox (badness 1231) in paragraph at lines 436--438
 State\OT1/cmr/m/n/9 . Ac-cessed from web on Feb. 24, 2016.
  []
 
-[13] [14] [15] ("Final Report.aux")
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+[13] [14] [15] ("Final Report.aux") ) 
 Here is how much of TeX's memory you used:
  3962 strings out of 493673
  57950 string characters out of 3145583
- 134901 words of memory out of 3000000
+ 134865 words of memory out of 3000000
  7257 multiletter control sequences out of 15000+200000
  15549 words of font info for 52 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  44i,11n,43p,928b,350s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Progra
-m Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmm
-i7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Pr
-ogram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9
-.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Pro
-gram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/fonts/type1/public
-/amsfonts/cm/cmti7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmti9.pfb>
-Output written on "Final Report.pdf" (15 pages, 664780 bytes).
+<C:/Program Files/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb>
+<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
+Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.p
+fb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program
+ Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmss12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Prog
+ram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Program Files/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on "Final Report.pdf" (15 pages, 664535 bytes).
 PDF statistics:
  137 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
