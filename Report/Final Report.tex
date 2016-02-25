@@ -58,147 +58,162 @@
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
 
+\usepackage[font=small,labelfont=it]{caption}
+
+
 \begin{document}
 \maketitle
 
 \begin{abstract}
-Air quality in China is a major issue.\cite{Moore14} In this report, we did some data science about it.
+Air pollution is a major cause of mortality, disease and disability in China.
+Even extremely conservative estimates suggest that air pollution may have an 
+premature death toll of 350,000-500,000 people per year in China alone,
+and there are several other health risks associated with air pollution which reduce quality of life. 
+Some of the most important forms of air pollution are the so-called \textit{fine particles}, aerosol particles
+less than 2.5 micrometers in diameter, which arise from burning fossil fuels, as in
+industrial, household, and transit settings.
+
+In this report, we variously explore the U.S. State Department's ``Mission China'' dataset, which 
+collects hourly data on fine particulate (or \(PM_{2.5}\)) in five major urban centers of China. First, we look at the hourly and locational
+nature of the data. Then we use regression and meteorological data to explore what proximate weather-related
+factors most have the most direct effect on air pollution in Beijing. Finally, we suggest
+directions for future exploration.
 \end{abstract}
 
 \section{Introduction}
 
 \subsection{Air Pollution}
-
 \begin{figure}[!ht]
   \centering
     \includegraphics[width=0.6\textwidth]{ParadeBlueBeijing}
-      \caption{\(\mathit{PM_{2.5}}\) \textit{during Beijing's Parade Blue}}
+      \caption{Decreased air pollution (by \(\mathit{PM_{2.5}}\)) during Beijing's Parade Blue, at four different times of day.
+      Note that Day 250 is September 7}
 \end{figure}
 
-A widely-circulated 2015 study from American
-think tank Berkeley Earth estimated from available literature
-as many as 1.2 to 2 million premature deaths a year from air pollution
-in China alone. Particulate matter causes "premature death 
-in people with heart and lung disease" per the EPA. 
-These numbers are backed up by the World
-Health Organization, the Lancet, and the IHME.
 
-Former Health minister Chen Zhu published 
-in the Lancet a conservative estimate of between
-350,000 and 500,000 deaths a year. For comparison,
-Dane, Iowa, Green, and Columbia counties (the 
-Madison Metro statistical area) had a total
-2010 population of 568,593.
+Air pollution is a major cause of mortality, disease and disability in China.\cite{Yang10, Stein14} 
+According to a 2013 study published in the Lancet \cite{Yang10}, ambient and household
+air pollution in 2010 accounted for China's fourth- and fifth-largest risk factors
+in terms of lost disability-adjusted life years (DALYs)\cite{WHO16}.
+Even conservative estimates, such as that given by former Health minister Chen Zhu
+in 2013\cite{Moore14}, peg the death toll at between 350,000 and 500,000 deaths per year.
+A think tank surveying the literature estimated
+that between 1.2-2 million premature deaths may be attributable to air pollution annually in China\cite{Rohde15}. 
 
-Reliable, accessible data taken hourly.
+Aerosol particles, especially \textit{fine particles} of less than 2.5 micrometers (or \(PM_{2.5}\)),
+are so deadly because they exacerbate some of the
+most common causes of death and ill health: Particle pollution has been linked with "premature death 
+in people with heart and lung disease, nonfatal heart attacks, irregular heartbeat,
+aggravated asthma, decreased lung function, and increased respiratory symptoms," per the EPA\cite{EPA16}. 
 
-Combined population of 5 cities' administrative areas is greater than
-100 million people (some 1.5\% of the human population 
-and 7\% of the population of China)
-
-Air pollution is caused by human activity
-such as industry, heating, and transportation
-and cities are one obvious starting point
-for China's efforts to improve air quality.
-
-The data is measured in terms of \(PM_{2.5}\), which measures the 
-total mass of fine particles in the atmosphere (micrograms
-per cubic meter).
+In August 2015, the Chinese government halted much of the country's
+industrial capacity and traffic for a WWII 70th anniversary celebration called "Parade Blue"\cite{Boren15}.
+During Parade Blue, \(PM_{2.5}\) readings quickly 
+dropped to record lows, dropping below 19.5 and averaging 
+\(35 \mu g/m^3\) during the celebration, well below typical readings. 
+Once the celebration ended, however,
+\(PM_{2.5}\) readings gradually returned to their historical norms. Parade Blue demonstrates
+starkly how sensitive air pollution is to proximate human activities
+and to their reduction.
 
 \subsection{Key Questions}
 
-In August 2015, the Chinese government stopped much of its
-industrial capacity and traffic for a 
-WWII 70th anniversary celebration called "Parade Blue"\cite{Boren15}.
+The U.S. Department of State collects hourly data in five cities at the Beijing Embassy
+and four other Consulates in large metropolitan areas (Guangzhou, Shanghai, Chengdu, and
+Shenyang). According to 2010 Census data, the combined population of these 5 cities' administrative areas is greater than
+100 million people (or some 1.5\% of the human population 
+and 7\% of the population of China)\cite{Wiki16}.
 
-\(PM_{2.5}\) readings quickly dropped below 19.5 and averaged \(35 \mu g/m^3\)
+Air pollution is caused by human activity
+such as industry, heating (especially solid fuels such as coal and wood used in household heating and cooking),
+and transportation, and cities, being a concentrated mass of human activies, are an obvious starting point
+in China's efforts to improve air quality. Lacking the domain knowledge to mount a proper study, we
+instead decided to look at collating and presenting what information was available to us---
+not only what we could find in the State Department's data but also other publicly-available datasets.
 
+In particular, we decided to look at time-and-location indexed, meteorological, and climatological data,
+in order to figure out which obvious factors might play a role in successfully understanding air pollution.
 
+More information will be provided in the next section on Data Sources, 
+but, for some basic reference points, all our air quality data is measured in terms of 
+\(PM_{2.5}\), which measures the 
+total mass of fine particles in the atmosphere (micrograms
+per cubic meter). Anything below 35.4 \(\mu g/m^3\) is considered
+Good or Moderate, while readings between 35.4 to 55.4 are ``Unhealthy for Sensitive Groups,''
+55.4 to 150.4 is Unhealthy, up to 250.4 is Very Unhealthy, and anything above 250.4  \(\mu g/m^3\)
+is considered Hazardous.
 
-Parade Blue demonstrated how sensitive particulate readings
-are to short-term human activities (and reduction).
+\subsection{Data Sources}
 
-We're using hours 0, 8, 12, 18 in order to account
-for the effect of the most important times of day
-without overcomplicating things.
+As mentioned previously, the United States Department of State measures
+air quality data at five locations---the U.S. Embassy in
+Beijing, and the Consulates in Chengdu, Guangzhou,
+Shanghai, and Shenyang. More detailed information about
+the files and the data use statement can be found at www.stateair.net\cite{StateAirFS, StateAirDU}.
 
-\section{Part 1 - Intuitive Exploration based on Visualization}
+We obtained meteorological data for Beijing (from the site "Weather Underground'' (at http://www.wunderground.com))
+which contains temperature, dew-point, humidity, sea-level, pressure, visibility, and wind speed. This will be
+explored in Part II.
 
+A dataset we weren't able to use---but is worth mentioning---
+is the NCEP/DOE AMIP-II Reanalysis (Reanalysis-2) dataset 
+from the National Oceanic and Atmospheric Administration
+(NOAA)\cite{NOAA, NOAA2}, provided through 
+the National Center for Atmospheric Research (NCAR). This will be explained in more detail in Part 3.
 
+\section{Part 1 - Exploratory Plotting}
 
-	Our dataset comes from the U.S. Department of State in the Embassy and Consulates of five major cities in China. Data is measured in terms of the total mass of particulate matter (particles with size 2.5 micrometers or less, which we denote as "PM 2.5"). The PM 2.5 data is hourly over the course of 2015, so there are 24 data points in each day for each of the five cities.
+	As mentioned above, our dataset comes from the U.S. Department of State in the Embassy and Consulates of five major cities in China. Data is measured in terms of the total mass of particulate matter (particles with size 2.5 micrometers or less, which we denote as " \(PM_{2.5}\)"). The  \(PM_{2.5}\) data is hourly over the course of 2015, so there are 24 data points in each day for each of the five cities.
 
-	The goal of this part is to explore the raw dataset based on visualization. We hope to get a big picture about the distribution of PM 2.5 among these five cities. Numerical analysis will be conducted in the next part.
+	The goal of this part of our analysis is to explore the raw dataset based on visualization. We hope to get a big picture about the distribution of  \(PM_{2.5}\) among these five cities. Numerical analysis will be conducted in the next part.
 
-	The nature of this dataset (and personal experience with air pollution) led us to a hypothesis that the pattern of P.M 2.5 varies from hour to hour. So we focused on four specific hours in the first stage of our exploration: We collected data at 12:00am, 8:00 am, 12:00 pm, and 6:00pm. 8:00 am and 6:00 pm are chosen since they are rush hours where we expect to see primary levels of transportation. 12:00am seems to be a solid baseline for low human activity and 12:00 pm is the midday, where we might expect lower transportation but higher industrial air pollution.
+	The nature of this dataset (and personal experience with air pollution) led us to a hypothesis that the pattern of \(PM_{2.5}\) varies from hour to hour, especially around peak driving hours. So we focused on four specific hours in the first stage of our exploration: We collected data at 12:00am, 8:00 am, 12:00 pm, and 6:00pm. 8:00 am and 6:00 pm are chosen since they are rush hours where we expect to see primary levels of transportation, 12:00am seems to be a solid baseline for low human activity, and 12:00 pm is the midday, where we might expect lower transportation but higher industrial air pollution.
 
-	Based on an informal comparison of these four hours, we made the assumption that the P.M 2.5 would be highly correlated with air pollution from traffic. We therefore expected to see relatively low P.M 2.5 at 12:00am and relatively high values at the 8:00 am and 6:00pm measurements.
+	Based on an informal comparison of these four hours, we made the assumption that the \(PM_{2.5}\) would be highly correlated with air pollution from traffic. We therefore expected to see relatively low \(PM_{2.5}\) at 12:00am and relatively high values at the 8:00 am and 6:00pm measurements.
 
-	Below in Figure 1 is our PM 2.5 plot for all five cities at the four hours. Note that the graph is color-coded by site: SH means Shanghai, GZ is Guangzhou, CD indicates Chengdu, BJ is Beijing, and SY stands for Shenyang. 
+	Below in Figure 2 is our  \(PM_{2.5}\) plot for all five cities at the four hours. Note that the graph is color-coded by site: SH means Shanghai, GZ is Guangzhou, CD indicates Chengdu, BJ is Beijing, and SY stands for Shenyang. 
 	
-	 \begin{figure}[!ht]
+\begin{figure}[!ht]
   \centering
-    \includegraphics[width=0.6\textwidth]{Figure1-1}
+    \includegraphics[width=0.8\textwidth]{Figure1-1}
       \caption{Each plot is the value of everyday \(PM_{2.5}\) at a particular time point (12:00 am, 8:00 am, 12:00 pm, and 6:00 pm) in 5 big cities in China (Shanghai, Guangzhou, Chengdu, Beijing, and Shenyang).
 }
 \end{figure}
 
-	The density of points in Figure 1 from these five cities makes it hard to notice any pattern. So, as an exploration, we decided to focus the first 50 days of 2015 which gives us the following graph.
+	The density of points in Figure 2 from these five cities makes it hard to notice any pattern. So, as an exploration, we decided to focus the first 50 days of 2015 which gives us the following graph.
 	
-
 \begin{figure}[!ht]
   \centering
-    \includegraphics[width=0.6\textwidth]{Figure1-2}
-      \caption{Four hours plots of 5 cities for the first 50 days}
+    \includegraphics[width=0.8\textwidth]{Figure1-2}
+      \caption{Four time-of-day plots of 5 cities for the first 50 days}
 \end{figure}
 
-In order to make the pattern for each city more clearly we concentrate on Hour 0 and split cities apart. 
+In order to make the pattern for each city manifest more clearly, we concentrate on Hour 0 and split cities apart. 
 
 \begin{figure}[!ht]
   \centering
-    \includegraphics[width=0.6\textwidth]{Figure1-3}
+    \includegraphics[width=0.8\textwidth]{Figure1-3}
       \caption{Hour 0 plots of 5 cities for the first 50 days}
 \end{figure}
 
-Figure 3 indicates that for the given hour and day period, Shanghai and Guangzhou maintain a very stable pattern. The P.M. 2.5 for Chengdu fluctuate a little bit. However, its pattern keeps stable in general. For Beijing and Shenyang, however, their P.M. 2.5 change violently for the first 50 days. Different latitudes and longitudes mays provide some information for us. Shanghai and Guangzhou are in the south of China. However, Beijing and Shenyang are in the north of China. 
-	There is a very clear trend to go up for Beijing. It seems that the P.M. 2.5 for Beijing will be higher than other cities on average for the following days. This very intuitive analysis gives us a direction that we should focus our project on Beijing which is also the reason why we are trying to use the meteorological data to explain the P.M. 2.5 for Beijing in the second part of our project. 
-	We also draw the plots for days 51-100 and days 101-150. These graphs also indicate that Beijing has very unique patterns than the rest of cities. So, in the next part we turns to regression model explaining Beijing’s P.M. 2.5 via meteorological data.
-	
-\begin{figure}[!ht]
-  \centering
-    \includegraphics[width=0.6\textwidth]{Figure1-4}
-      \caption{Four-hour plots of 5 cities for days 51-100}
-\end{figure}
-
-\begin{figure}[!ht]
-  \centering
-    \includegraphics[width=0.6\textwidth]{Figure1-4}
-      \caption{Four-hour plots of 5 cities for days 101-150}
-\end{figure}
+Figure 3 indicates that for the given hour and day period, Shanghai and Guangzhou maintain a very stable pattern. The \(PM_{2.5}\) for Chengdu fluctuates a bit, but its pattern remains stable in general. For Beijing and Shenyang, however, their  \(PM_{2.5}\) values change violently over the first 50 days. Different latitudes and longitude mays provide some of the explanation for this, as Shanghai and Guangzhou are in the south of China, while Beijing and Shenyang are in the north. 
+	There is a clear upward trend for Beijing in this 50-day interval. It seems that the \(PM_{2.5}\) values for Beijing are higher than for other cities on average for the following days. This intuitive analysis gives us an indication that it might be most interesting to explain the data for Beijing.
 
 \newpage
 
-\section{Part 2 - Regression fitting and Outlier Analysis}
+\section{Part 2 - Regression Fitting and Outlier Analysis}
 \subsection{Regression of meteorological factors on daily average \(PM_{2.5}\)}
 
- \begin{quotation}
-“Each country has different standards for \(PM_{2.5}\) mass concentration. To meet the standard for \(PM_{2.5}\), it is desirable to find the factors affecting \(PM_{2.5}\) concentration.”\cite{Chatani11}
- \end{quotation}
+In general, academic papers\cite{Chatani11, Tai10, Pohjola02} suggest that three major factors contribute to the concentration of \(PM_{2.5}\): 1. domestic sources of emissions, 2. foreign sources, and 3. meteorological conditions.
+
+As Pohjola \textit{et al.} note: “[M]eteorological conditions can largely diffuse, dilute, and accumulate pollutants.”\cite{Pohjola02}. Tai \textit{et al.} make an even stronger claim: “We find that daily variation in meteorology as described by the multiple linear regression can explain up to 50\% of \(PM_{2.5}\) variability with temperature, relative humidity, precipitation, and circulation all being important predictors.”\cite{Tai10}.
  
- Reports have argued that three factors can make an important effect on the \(PM_{2.5}\) mass concentration, which are domestic pollutants emission sources, external sources outside of the country, and the meteorological conditions
- 
-  \begin{quotation}
-“As shown by previous studies, meteorological conditions can largely diffuse, dilute, and accumulate pollutants.”\cite{Pohjola02}
- \end{quotation}
- 
-  \begin{quotation}
-“We find that daily variation in meteorology as described by the multiple linear regression can explain up to 50\% of \(PM_{2.5}\) variability with temperature, relative humidity (RH), precipitation, and circulation all being important predictors.”\cite{Tai10}
- \end{quotation}
- 
- Thus, in the second part of our project, the key point is to figure out the relationship between meteorological variables and \(PM_{2.5}\) values in each day during 2015. 
-Based on the analysis above about the hourly \(PM_{2.5}\) for 5 cities, Beijing is outstanding than other cities, presenting a higher level as a whole. Therefore, our first target for study is Beijing, the capital as well as political center of China. 
-The meteorological data we obtained is from the weather underground website. In accordance with the daily average value of \(PM_{2.5}\), the meteorological factors being analyzed are the mean values of temperature, dew point, humidity, sea level pressure and wind speed in each day from January 1 to December 31 of 2015. Taken the lag effect into consideration, a lag factor is also included in our regression models, which is the average \(PM_{2.5}\) value one day before.
-First we combine the meteorological data with the daily average\(PM_{2.5}\) data, then to fit our regression model. However, after drawing a graph of daily average \(PM_{2.5}\) during 2015, what we noticed is that it has a high beginning and end. In order to exclude the impacts of these extremely high values on our final model, it is obvious that we should focus only on days with normal \(PM_{2.5}\). According to the new air quality standards in China, we delete days that have average \(PM_{2.5}\) higher than 250\(\mu g/m^3\), which represents for a severe air pollution. And for 2015, Beijing has 18 days that the \(PM_{2.5}\) is larger than \(\mu g/m^3\).
+Thus, in the second part of our project, we explored the relationship between meteorological variables and daily mean \(PM_{2.5}\) values for each day in 2015. 
+Based on the analysis in Part 1 on the first 50 days of 2015, Beijing---the capital and political center of China---is somewhat outstanding in its \(PM_{2.5}\) data, presenting a higher level of emissions in general than in the other four cities.
+
+As mentioned in the Data Sources section, all the meteorological data we obtained is from the Weather Underground website mentioned in the Data Sources section above. So that our metereological data accords with our air pollution data, we consider the mean daily value for all of our factors (temperature, dew point, humidity, sea level pressure, and wind speed). We have this data for each day from January 1 to December 31, 2015. In order to take the time series of our data into account, we also include the prior day's mean \(PM_{2.5}\).
+
+Once we'd collected this data, we combined the meteorological data with the daily average\(PM_{2.5}\) data, then attempted to fit a regression model which would explain air pollution on each day. However, after drawing a graph of daily average \(PM_{2.5}\) during 2015, we noticed that the daily \(PM_{2.5}\) means have considerably higher means and a large number of outliers at the beginning and end of the year. In order to minimize the impacts of these extreme outliers on our final model, we decided to start by focusing only on days with relatively normal levels of \(PM_{2.5}\). According to the new air quality standards in China, we delete days that have average \(PM_{2.5}\) higher than 250\(\mu g/m^3\), which represents a day with severe air pollution. For 2015, Beijing has 18 days that the \(PM_{2.5}\) is larger than \(\mu g/m^3\).
 
  \begin{figure}[!ht]
   \centering
@@ -207,8 +222,10 @@ First we combine the meteorological data with the daily average\(PM_{2.5}\) data
 \end{figure}
  
  
- Next step, we start with the linear regression without interaction terms after filtering out days with \(PM_{2.5}\) larger than 250\(\mu g/m^3\). And for days \(PM_{2.5}>\mu g/m^3\), specific analysis is needed for further research. 
-By summarizing the fitted model with all meteorological variables and one lag factor, we find out that only four variables are significant, which are the daily average values of temperature, sea level pressure, wind speed and the lag factor.
+Once these outliers are set aside, we attempt a multiple linear regression without interaction terms. We'll return to the outliers later. 
+
+\subsubsection{Regression Results} 
+When we include all meteorological variables and one lag factor, we find that only four variables appear to be significant: The daily average values of temperature, sea level pressure, wind speed and the lag factor of the previous day's emissions. In Table 1 below, we summarize the results of this regression.
  
  \begin{table}
  \begin{tabular} {| r | r | r | r | r |}
@@ -227,26 +244,32 @@ By summarizing the fitted model with all meteorological variables and one lag fa
  \caption{Significant variables in the linear model.}
  \end{table}
  
-Based on the table above, the estimated coefficients of mean temperature, mean sea level pressure and mean wind speed for each day are negative, which indicates the negative effects of these meteorological variables on the \(PM_{2.5}\) values. In contrast, the positive coefficient of lag(mean pm,1) suggests a positive relationship between \(PM_{2.5}\) and the lag factor.
-Then we need to determine how well the model is. However, the adjusted R-squared is 0.5116, indicates the fitted model is not ideal. And in conjunction with the residual plot, which shows a strong pattern, we can say that a Non-linear regression is necessary in our future exploration. 
+Based on the table above, the estimated coefficients of 
+mean temperature, mean sea level pressure and mean wind speed for each day are negative, 
+which indicates negative effects of increasing these
+meteorological variables on the \(PM_{2.5}\) values. 
+By contrast, the positive coefficient of our one-day lag term suggests a positive relationship between
+\(PM_{2.5}\) and the lagged response.
 
- 
+Is the model successful? The adjusted R-squared is 0.5116, which is weaker than we might want considering the previous day's mean is included and indicates the fitted model is not ideal. 
+In Figure 8 (left), we see that the residuals increase with the fitted value. Together, these facts suggest we should look for an appropriate transformation of the data.
 
-
- \begin{figure}[!ht]
+\begin{figure}
+\centering
+\begin{minipage}{.5\textwidth}
   \centering
-    \includegraphics[width=0.6\textwidth]{Figure2-2}
-      \caption{Residual plot of a linear regression on significant meteorogical factors versus daily average \(PM_{2.5}\) values}
+  \includegraphics[width=\linewidth]{Figure2-2}
+  \label{fig:test1}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{Figure2-3}
+  \label{fig:test2}
+\end{minipage}
+\caption{Linear regression on significant meterological factors vs. daily mean \(PM_{2.5}\). Residuals (left) and fitted model (right). 18 outliers were not included in the regression.}
 \end{figure}
 
- \begin{figure}[!ht]
-  \centering
-    \includegraphics[width=0.6\textwidth]{Figure2-3}
-      \caption{Fitted model plot of linear regression of daily average \(PM_{2.5}\) versus
-      meterological factors, after deleting outliers.}
-\end{figure}
-
-Employ Box-Cox transformation to the fitted model, lambda is closer to 0, which indicates a log transformation is appropriate. So we refit the model by doing log transformation to the average \(PM_{2.5}\). According to the residual plot and larger adjusted R-square (0.5824), the new fitted model is better than the prior one, but still not good enough to explain the exact relationship.
+In order to deal with the residual pattern, we tried a Box-Cox transformation on the fitted model and found that a \(\lambda\) near 0 makes sense, indicating that a log transformation is appropriate. So we refit the model by doing a log transformation on the average \(PM_{2.5}\). According to the residual plot and larger adjusted R-squared (0.5824), the new fitted model is better than the prior one, but still not good enough to explain the relationship very well.
 
  \begin{figure}[!ht]
   \centering
@@ -254,9 +277,7 @@ Employ Box-Cox transformation to the fitted model, lambda is closer to 0, which 
       \caption{Residual plot of new fitted model after log transformation of daily average \(PM_{2.5}\). 18 outliers are still not included in the dataset.}
 \end{figure}
 
-\newpage
-
-\subsection{Exploring outliers with \(PM_{2.5}\) > 250}
+\subsection{Exploring outliers with mean \(PM_{2.5} > 250\)}
 
  \begin{figure}[!ht]
   \centering
@@ -264,16 +285,17 @@ Employ Box-Cox transformation to the fitted model, lambda is closer to 0, which 
       \caption{Daily averages for every day from 2013-2015--points from 2013 are displayed in blue, points from 2014 in green, and points from 2015 in black.}
 \end{figure}
 
-As we can see in the previous plot, the outliers of 2015 were concentrated in January, Feburary, October and December. These are the months when temperatures are relatively low within a year. Naturally, we want to see if this phenomenon is a pattern across 3 years. 
+As can be seen in Figure 7 above, the outliers of 2015 were concentrated in January, Feburary, October, November, and December. These are the months when temperatures are relatively low within a year. Naturally, we want to see if this phenomenon holds across many years. So we looked at the three years of data from 2013 to 2015. Table 2 below shows the results, which confirm the concentration of outliers in the October-February season.
 
+\begin{table}[t]
 \begin{tabular}{| ccc | ccc | ccc |}
 \hline
 \multicolumn{3}{|c|}{2013} & 
 \multicolumn{3}{|c|}{2014} &
 \multicolumn{3}{|c|}{2015} \\ \hline
-Month & Day & Mean PM 2.5 & 
-Month & Day & Mean PM 2.5 &
-Month & Day & Mean PM 2.5 \\ \hline
+Month & Day & Mean \(PM_{2.5}\) & 
+Month & Day & Mean \(PM_{2.5}\) &
+Month & Day & Mean \(PM_{2.5}\) \\ \hline
 1 & 11 & 361.2 &1 & 16 & 448.4 &1 & 15 & 374.8 \\
 1 & 12 & 568.6 &1 & 23 & 288.4 &2 & 14 & 268.5  \\
 1 & 13 & 416.3 &2 & 14 & 299.7 &2 & 15 & 285  \\
@@ -301,8 +323,11 @@ Month & Day & Mean PM 2.5 \\ \hline
 &&&12 & 9 & 358.6 &&& \\
 \hline
 \end{tabular}
+\caption{Outliers with mean \(PM_{2.5} > 250\)}
+\end{table}
 
-In the regression part, there is a linear relationship between the \(PM_{2.5}\) values excluding extreme values and meteorological variables. So for the outliers, I also wanted to check if there is a linear relationship as before. The fitted results are plotted in figure 2.6.
+In the regression we performed above, there is a solid linear relationship between the \(PM_{2.5}\) values (excluding extreme values) and the meteorological variables. So we wanted to check if there's a linear relationship among the extreme values and the meteorological variables on those days. 
+The fitted results are plotted in Figure 9 below.
 
  \begin{figure}[!ht]
   \centering
@@ -310,10 +335,10 @@ In the regression part, there is a linear relationship between the \(PM_{2.5}\) 
        \caption{Fitted values of a linear regression for outliers in 2015.}
 \end{figure}
 
-There was only one meteorological variable is significant, that is mean visibility measured in miles. This variable was kind intuitively reasonable, however, maybe too directly dominant the relationship. So I refitted the model without this variable, it turned out that the mean sea level pressure became significant.
+Only one meteorological variable is significant, mean visibility (in miles). This variable imakes intuitive sense given the relation between air pollution and visibility. However, it's not really what we're interested in looking at. So I refitted the model without this variable. When the variable of mean visibility was removed, mean \emph{sea level pressure} became significant.
 
-When I could not find a reason with my knowledge to explain the relationship, I decided to see if there is a similar relationship in one particular day. So I took 24  \(PM_{2.5}\) values of January 15 in 2015, did regression on the corresponding meteorological variables within a day. The regression result was shown in Figure 2.7. It turned out that again the sea level pressure was significant with adjusted R-square as highly as 0.77.
-
+I could not find a good reason in my existing knowledge which would explain the relationship, but I was curious to see how strong this relationship was. So I decided to see if a similar relationship would hold throughout one particular day. 
+So I took the 24 recorded \(PM_{2.5}\) values from January 15, 2015, which was an exceptionally bad day for emissions. On these 24 points I did a regression on the corresponding meteorological variables within the day. The regression result is shown in Figure 10. It turned out that again the sea level pressure was significant with a major adjusted R-square of 0.77.
 
  \begin{figure}[!ht]
   \centering
@@ -321,74 +346,114 @@ When I could not find a reason with my knowledge to explain the relationship, I 
       \caption{Fitted values of a linear regression for \(PM_{2.5}\) values on January 15, 2015.}
 \end{figure}
 
-Some ideas about the relationship between \(PM_{2.5}\) and sea level pressure
-Beijing is surrounded by mountain ranges that lead to the inversion layer—cold air settles on top of a warmer air mass, trapping the pollutants inside \cite{Hawkins10}. In normal case, air temperature would decrease with altitude. Due to the fact that cold air is denser than warm air, the warmer air near surface is forced to move upward and carries \(PM_{2.5}\) away. In the winter, Beijing’s near surface air cools down much faster than the air high above at night and inversion layer forms (shown in Figure 2.8 below). Colder air sticks near surface and \(PM_{2.5}\) is trapped and starts to accumulation. 
+\subsubsection{Some ideas about the relationship between \(PM_{2.5}\) and sea level pressure}
+
+Why might this relationship hold? Based on what I was able to find, it seems that Beijing is affected by a meteorologiclal situation called an \textit{inversion}. An inversion is a phenomenon of wind that can prevent air pollutants from escaping. Beijing is surrounded by mountain ranges that lead to the inversion layer—cold air settles on top of a warmer air mass, trapping the pollutants inside \cite{Hawkins10}. In a normal situation, air temperature would decrease with altitude. Due to the fact that cold air is denser than warm air, the warmer air near the surface is forced upward and carries \(PM_{2.5}\) away. In contrast, Beijing’s near-surface air cools down much faster than the air high above at night, and this causes an inversion layer to form (shown in Figure 11 below). Colder air sticks to the surface and traps the \(PM_{2.5}\), which then accumulates in the city.
 
 
  \begin{figure}[!ht]
   \centering
     \includegraphics[width=0.6\textwidth]{Figure2-8}
-      \caption{Relationship between Temperature and altitude}
+      \caption{Relationship between Temperature and altitude\cite{Inversion}}
 \end{figure}
 
-According to ideal gas law: PV=nRT, sea-level pressure is positive related to near surface temperature.  Near surface temperature is minimal when the sea-level pressure is low and cold air would be trapped with \(PM_{2.5}\). In conclusion, sea-level pressure should be negatively related to \(PM_{2.5}\) concentration.
-
-
-
+According to the ideal gas law, we have \(PV=nRT\), and sea-level pressure is positively related to near-surface temperature.  
+Near-surface temperature is minimal when the sea-level pressure is low and cold air would be trapped with \(PM_{2.5}\).
+In conclusion, sea-level pressure should be negatively related to \(PM_{2.5}\) concentration.
 
 
 \section{Conclusions and Future Work}
 
+\subsection{General Comments}
+
+Without an environmental expert to guide us through which research directions are more promising, 
+it's difficult to do more than pattern-match. We can pattern-match and present the data well, but there's a major
+limitation and inconvenience that comes from lacking expert domain knowledge.
+
+From a technical perspective, 
+it would be tremendously helpful to have someone who has expertise 
+in hierarchical database management---in which hierarchical data is stored in a way 
+that we can easily retrieve what we need and slice it up in more complicated ways.
+
+Something else that might be worth effort by a research team or a company might be
+to see which \(PM_{2.5}\) datasets are available for sites across the world.
+
+Just as Beijing seemed to be a city with some
+particular geographic features, are there other cities with similar accumulation footprints?
+
+\subsection{Multi-Level Model}
+
+One thing we saw as extremely promising along these lines was the massive climatological datasets that agencies like the NOAA collect.
+
+In particular, the Reanalysis-2 dataset mentioned in the Data Sources section was incredibly rich--there were hundreds of readings
+every month from dozens of locations. One of the things we wanted to build (but didn't have the time or background to do)
+was a large multi-level, spatial model which would take data from all the sensors available to create a very precise idea
+of the city's meteorological situation and could separate out city-specific, sensor-specific, time-specific contributions to variance
+and determine what which the major local factors and patterns that could help us understand the sources and the sinks for
+air pollution. 
+
+The Reanalysis dataset likely would have been an undertaking of several months, if not years.
+Much of the data was heavily nested and hard to access, much of it was missing, sensors seemed clustered around certain longitude lines,
+many of the naming schemas were unclear, and overall, it would probably take a large amount of time and effort 
+in conjunction with a professional climatologist to understand exactly how to use it.
+
+On the other hand, the data is right there, for anyone who knows how to interpret it.
+
 \subsection{Meteorological Regression}
 
-Until now we have not figured out the exact model of \(PM_{2.5}\) concentration on the meteorological factors, because of the limitation of knowledge and data source. If we had more time on the project, we might find ways to deal with these problems and fit a much better model. So far, we only have a sense that \(PM_{2.5}\) concentration does have relationship with meteorological data, and the temperature, wind speed, sea level pressure have negative impacts on the \(PM_{2.5}\) in Beijing, based on a daily average level of one year. However, we have no idea about other variables, such as precipitation, circulation. Thus, in the future, for the regression part, we want to find more explanative predictors for the final model, and explore the specific relationship between \(PM_{2.5}\) concentration and meteorological factors quarterly, based on an hourly level, if data is available. Moreover, try to analyze the results using spatial data, compare the differences of regressions among cities.
+We haven't yet figured out the exact model for \(PM_{2.5}\) concentration on the meteorological factors, 
+because we lack necessary prior knowledge and because we had trouble acquiring the data source. 
+If we had more time on the project, we might find ways to deal with these problems and fit a much better model. 
+
+So far, we have a sense that \(PM_{2.5}\) concentration does have relationship with meteorological data,
+as the temperature, wind speed, and sea level pressure all seem to have negative impacts on the \(PM_{2.5}\) in Beijing, based on a daily average level of one year. 
+However, we have no idea about other variables, such as precipitation and circulation. 
+
+Thus, in the future, for the regression part, we want to find more explanatory predictors for the final model.
+We would also like to explore the specific relationship between \(PM_{2.5}\) concentration and meteorological factors on an hourly level (if the right dataset is available). 
+
+Moreover, we'd like to try to analyze the results using spatial data in order to compare the differences between regressions among cities.
 
 \subsection{Outliers:} 
 
-For extreme air pollution events, besides sea level pressure, there must be other factors that will explain part of it, like coal usage during heating time if we can get the data. It’s a cumulative process that eventually result in an outlier. One idea is to find some relationship between one outlier and several days before it, and see if there is a trend or pattern for most of the outliers. 
-
-Lots of missing data--meant for building climate models,
-not small-scale, localized projects.
-
-"Self-documenting code", but requires some expert domain
-knowledge
-
-Idea is to treat city as a fixed effect
-and compute readings by month/day as random effects
-with multiple error terms
-
-Makes more sense for grouping dozens of 
-messy, missing, spatially-dispersed meteorogical
-data with multiple readings--not so useful for
-estimating parameters with single samples.
-
-Might be useful for handling "repeated samples" from 
-groupings in mornings, afternoon, evening, night. 
-
-More useful for ggplot/organization than for stats
-in this project (1 object instead of 5)
+For extreme air pollution events--besides sea level pressure, there must be other factors that will explain part of it, like coal usage during heating time if we can get the data. It’s a cumulative process that eventually result in an outlier. One idea is to find some relationship between one outlier and several days before it (as opposed to just the one-day lagged mean), and see if there is a trend or pattern for the outliers. 
 
 
-\section{Methods and Data Sources}
 
-The United States Department of State measures
-air quality data at five locations--the U.S. Embassy in
-Beijing, and the Consulates in Chengdu, Guangzhou,
-Shanghai, and Shenyang. 
 
-The meteorological data (from the site "Weather Underground") 
-contains temperature, dew-point, humidity, sea-level
-pressure, visibility, and wind speed.
 
-NOAA Reanalysis dataset--perfect, but way too complicated
-to interpret, parse, and group. Simpler datasets
-are available.
 
 
 \begin{thebibliography}{1}
 
+\bibitem{NOAA} National Centers for Environmental Prediction/National Weather Service/NOAA/U.S. Department of Commerce. 2000. NCEP/DOE Reanalysis 2 (R2). Research Data Archive at the National Center for Atmospheric Research, Computational and Information Systems Laboratory. http://rda.ucar.edu/datasets/ds091.0/. Accessed Feb. 24, 2015.
+
+\bibitem{NOAA} ``NCEP/DOE AMIP-II Reanalysis (Reanalysis-2)'' \textit{National Weather Service---Climate Prediction Center}. Accessed from web on Feb. 24, 2016.
+
+\bibitem{StateAirFS} ``Fact Sheet,'' \textit{U.S.  Department of State}. Accessed from web on Feb. 24, 2016.
+http://www.stateair.net/web/assets/USDOS\_AQDataFilesFactSheet.pdf
+
+\bibitem{StateAirDU} ``Data Use Statement,'' \textit{U.S.  Department of State}. Accessed from web on Feb. 24, 2016.
+http://www.stateair.net/web/assets/USDOS\_AQDataUseStatement.pdf
+
+\bibitem{AQICN16} ``Revised PM2.5 AQI breakpoints,'' \textit{AQICN.org}. Accessed from web on Feb. 24, 2016.
+
+\bibitem{Wiki16} 	``List of cities in China by population and built-up area,'' \textit{Wikipedia}. Accessed from web on Feb. 24, 2016.
+
+\bibitem{Rohde15} Rohde, Robert A., and Richard A. Muller. "Air pollution in China: Mapping of concentrations and sources." \textit{PloS one}. 10.8 (2015): e0135749.
+
+\bibitem{EPA16} ``Health | Particulate Matter | Air \& Radiation | US EPA,'' \textit{U.S. Environmental Protection Agency,''}. Accessed from web on Feb. 24, 2016.
+
+\bibitem{WHO16} ``Metrics: Disability-Adjusted Life Year (DALY),'' \textit{World Health Organization}. Accessed from web on Feb. 24, 2016.
+
+\bibitem{Yang10}
+Yang, Gonghuan, et al. "Rapid health transition in China, 1990–2010: findings from the Global Burden of Disease Study 2010." \textit{The Lancet}. 381.9882 (2013): 1987-2015.
+
+\bibitem{Stein14}
+Stein, Rob. "China's Air Pollution Linked To Millions Of Early Deaths." \textit{NPR} 10 Feb. 2014. Accessed from web on Feb. 24, 2016.
+
 \bibitem{Boren15}
-Boren, Zachary D. "China Air Pollution: Beijing Records Its Cleanest Air Ever." 27 Aug. 2015. Accessed from web on Feb. 24, 2016.
+Boren, Zachary D. "China Air Pollution: Beijing Records Its Cleanest Air Ever." \textit{Greenpeace}. 27 Aug. 2015. Accessed from web on Feb. 24, 2016.
 
 \bibitem{Moore14}
 Moore, Malcolm. "China's 'airpocalypse' Kills 350,000 to 500,000 Each Year." \textit{The Telegraph}. Telegraph Media Group, 07 Jan. 2014. Accessed from web on Feb. 24, 2016.
@@ -402,8 +467,16 @@ Pohjola, M. A., A. Kousa, J. Kukkonen, J. Härkönen, A. Karppinen, P. Aarnio, a
 \bibitem{Tai10}
 Tai, Amos PK, Loretta J. Mickley, and Daniel J. Jacob. "Correlations between fine particulate matter (PM 2.5) and meteorological variables in the United States: Implications for the sensitivity of PM 2.5 to climate change." \textit{Atmospheric Environment} 44, no. 32 (2010): 3976-3984.
 
+\bibitem{Inversion} Huber, Anna. ``Inversion Layers,'' \textit{csun.edu}. Aug. 26, 2004. Accessed from web on Feb. 24, 2016. 
+Illustration sourced to [Turco2002]
+
+\bibitem{Inversion2}{[Turco2002]}
+Turco, Richard P. Earth Under Siege: From Air Pollution to Global Change. New York: Oxford University Press, 2002. Print.
+
 \bibitem{Hawkins10}
-Hawkins, Timothy W., and Lisa A. Holland. "Synoptic and local weather conditions associated with PM2. 5 concentration in Carlisle, Pennsylvania." \textit{Middle States Geographer} 43 (2010): 72-84.
+Hawkins, Timothy W., and Lisa A. Holland. "Synoptic and local weather conditions associated with PM2.5 concentration in Carlisle, Pennsylvania." \textit{Middle States Geographer} 43 (2010): 72-84.
+
+
 
 \end{thebibliography}
 
