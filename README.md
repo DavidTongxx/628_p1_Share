@@ -174,3 +174,9 @@ Feb. 22
 Xingxing 
 
 
+#Project End 
+
+The air quality exploration in China is ended today. It is really nice to work with you guys.
+Good luck with your next project.
+Feb. 25
+Xingxing
