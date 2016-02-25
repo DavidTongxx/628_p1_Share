@@ -1,0 +1,11 @@
+Most of the groups I've ever been in tend to go one of two ways:
+
+1. One person takes control of the group, does by far the most work, and
+claims the most credit, or:
+2. No one takes control of the group and the group doesn't find cohesion.
+
+From everyone I've ever spoken to, both experiences are pretty common. This group thankfully went much better than that. We genuinely approached problems as a group, we met to discuss specific roles, deadlines, and expectations, and while we all put effort into the group, no one tried to impose their specific vision.  We worked hard in this group, but we rarely overtaxed ourselves. We gave advice, but rarely gave commands. It was comfortable but not complacent.
+
+We didn't really get a specific result from our project, and in terms of either the corporate or the academic world, that might be a problem in terms of funding or continuing a project. Indeed, we probably could have focused our efforts more on honing in on one specific question and answer, and that might have been helpful for getting something more at the end of the day. On the other hand, it strikes me that most meaningful progress on any major question of data science rarely takes two months, but is built on sustainable practices, realistic deadlines, and consistent progress over many months or even years.
+
+There is a certain "pressure to find a good-looking result" in college and in business, which seems to be the major drive for ambitious people to take over groups. But those groups by their very nature are more prone to conflict than we were, learn less from one another than we did, and ultimately strike me as being much less satisfying and productive in the long term than we probably would be. Better the slow, inclusive search for a promising problem than the hasty, ambitious pursuit of the easy solution.
