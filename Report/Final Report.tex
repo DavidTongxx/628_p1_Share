@@ -143,17 +143,15 @@ Good or Moderate, while readings between 35.4 to 55.4 are ``Unhealthy for Sensit
 55.4 to 150.4 is Unhealthy, up to 250.4 is Very Unhealthy, and anything above 250.4  \(\mu g/m^3\)
 is considered Hazardous.
 
+
+
+
+
 \section{Exploratory Plotting}
 
 	As mentioned above, our dataset comes from the U.S. Department of State in the Embassy and Consulates of five major cities in China. Data is measured in terms of the total mass of particulate matter (particles with size 2.5 micrometers or less, which we denote as " \(PM_{2.5}\)"). The  \(PM_{2.5}\) data is hourly over the course of 2015, so there are 24 data points in each day for each of the five cities.
 
 	The goal of this part of our analysis is to explore the raw dataset based on visualization. We hope to get a big picture about the distribution of  \(PM_{2.5}\) among these five cities. Numerical analysis will be conducted in the next part.
-
-	The nature of this dataset (and personal experience with air pollution) led us to a hypothesis that the pattern of \(PM_{2.5}\) varies from hour to hour, especially around peak driving hours. So we focused on four specific hours in the first stage of our exploration: We collected data at 12:00am, 8:00 am, 12:00 pm, and 6:00pm. 8:00 am and 6:00 pm are chosen since they are rush hours where we expect to see primary levels of transportation, 12:00am seems to be a solid baseline for low human activity, and 12:00 pm is the midday, where we might expect lower transportation but higher industrial air pollution.
-
-	Based on an informal comparison of these four hours, we made the assumption that the \(PM_{2.5}\) would be highly correlated with air pollution from traffic. We therefore expected to see relatively low \(PM_{2.5}\) at 12:00am and relatively high values at the 8:00 am and 6:00pm measurements.
-
-	Below in Figure 2 is our  \(PM_{2.5}\) plot for all five cities at the four hours. Note that the graph is color-coded by site: SH means Shanghai, GZ is Guangzhou, CD indicates Chengdu, BJ is Beijing, and SY stands for Shenyang. 
 	
 \begin{figure}[!ht]
   \centering
@@ -162,23 +160,33 @@ is considered Hazardous.
 }
 \end{figure}
 
-	The density of points in Figure 2 from these five cities makes it hard to notice any pattern. So, as an exploration, we decided to focus the first 50 days of 2015 which gives us the following graph.
+	The nature of this dataset (and personal experience with air pollution) led us to a hypothesis that the pattern of \(PM_{2.5}\) varies from hour to hour, especially around peak driving hours. So we focused on four specific hours in the first stage of our exploration: We collected data at 12:00am, 8:00 am, 12:00 pm, and 6:00pm. 8:00 am and 6:00 pm are chosen since they are rush hours where we expect to see primary levels of transportation, 12:00am seems to be a solid baseline for low human activity, and 12:00 pm is the midday, where we might expect lower transportation but higher industrial air pollution.
 	
 \begin{figure}[!ht]
   \centering
-    \includegraphics[width=0.8\textwidth]{Figure1-2}
+    \includegraphics[width=0.6\textwidth]{Figure1-2}
       \caption{Four time-of-day plots of 5 cities for the first 50 days}
 \end{figure}
 
+	Based on an informal comparison of these four hours, we made the assumption that the \(PM_{2.5}\) would be highly correlated with air pollution from traffic. We therefore expected to see relatively low \(PM_{2.5}\) at 12:00am and relatively high values at the 8:00 am and 6:00pm measurements.
+
+	In Figure 2 is our  \(PM_{2.5}\) plot for all five cities at the four hours. Note that the graph is color-coded by site: SH means Shanghai, GZ is Guangzhou, CD indicates Chengdu, BJ is Beijing, and SY stands for Shenyang. 
+	
+
+
+	The density of points in Figure 2 (above) from these five cities makes it hard to notice any pattern. So, as an exploration, we decided to focus the first 50 days of 2015 which gives us the following graph.
+	
+
+
 In order to make the pattern for each city manifest more clearly, we concentrate on Hour 0 and split cities apart. 
 
-\begin{figure}[!ht]
+\begin{figure}[!bt]
   \centering
     \includegraphics[width=0.8\textwidth]{Figure1-3}
       \caption{Hour 0 plots of 5 cities for the first 50 days}
 \end{figure}
 
-Figure 3 indicates that for the given hour and day period, Shanghai and Guangzhou maintain a very stable pattern. The \(PM_{2.5}\) for Chengdu fluctuates a bit, but its pattern remains stable in general. For Beijing and Shenyang, however, their  \(PM_{2.5}\) values change violently over the first 50 days. Different latitudes and longitude mays provide some of the explanation for this, as Shanghai and Guangzhou are in the south of China, while Beijing and Shenyang are in the north. 
+Figure 3 above indicates that for the given hour and day period, Shanghai and Guangzhou maintain a very stable pattern. The \(PM_{2.5}\) for Chengdu fluctuates a bit, but its pattern remains stable in general. For Beijing and Shenyang, however, their  \(PM_{2.5}\) values change violently over the first 50 days. Different latitudes and longitude mays provide some of the explanation for this, as Shanghai and Guangzhou are in the south of China, while Beijing and Shenyang are in the north. 
 	There is a clear upward trend for Beijing in this 50-day interval. It seems that the \(PM_{2.5}\) values for Beijing are higher than for other cities on average for the following days. This intuitive analysis gives us an indication that it might be most interesting to explain the data for Beijing.
 
 \newpage
@@ -195,13 +203,15 @@ Based on the analysis in the Exploratory Plotting section on the first 50 days o
 
 As mentioned in the Data Sources section, all the meteorological data we obtained is from the Weather Underground website. So that our metereological data accords with our air pollution data, we consider the mean daily value for all of our factors (temperature, dew point, humidity, sea level pressure, and wind speed). We have this data for each day from January 1 to December 31, 2015. In order to take the time series of our data into account, we also include the prior day's mean \(PM_{2.5}\).
 
-Once we'd collected this data, we combined the meteorological data with the daily average\(PM_{2.5}\) data, then attempted to fit a regression model which would explain air pollution on each day. However, after drawing a graph of daily average \(PM_{2.5}\) during 2015, we noticed that the daily \(PM_{2.5}\) means have considerably higher means and a large number of outliers at the beginning and end of the year. In order to minimize the impacts of these extreme outliers on our final model, we decided to start by focusing only on days with relatively normal levels of \(PM_{2.5}\). According to the new air quality standards in China, we delete days that have average \(PM_{2.5}\) higher than 250\(\mu g/m^3\), which represents a day with severe air pollution. For 2015, Beijing has 18 days that the \(PM_{2.5}\) is larger than \(\mu g/m^3\).
-
  \begin{figure}[!ht]
   \centering
-    \includegraphics[width=0.6\textwidth]{Figure2-1}
+    \includegraphics[width=0.65\textwidth]{Figure2-1}
       \caption{Daily average of \(PM_{2.5}\) measurements in Beijing for each day of 2015. The red line is at the value 250 \(\mu g / m^3\). We delete points above the red line in our model fitting.}
 \end{figure}
+
+Having collected this data, we combined the meteorological data with the daily average\(PM_{2.5}\) data, then attempted to fit a regression model which would explain air pollution on each day. However, after drawing a graph of daily average \(PM_{2.5}\) during 2015, we noticed that the daily \(PM_{2.5}\) means have considerably higher means and a large number of outliers at the beginning and end of the year. In order to minimize the impacts of these extreme outliers on our final model, we decided to start by focusing only on days with relatively normal levels of \(PM_{2.5}\). According to the new air quality standards in China, we delete days that have average \(PM_{2.5}\) higher than 250\(\mu g/m^3\). Each of these deleted days represents a day marked by severe pollution. For 2015, Beijing has 18 days where the measured \(PM_{2.5}\) is larger than \(\mu g/m^3\).
+
+
  
  
 Once these outliers are set aside, we attempt a multiple linear regression without interaction terms. We'll return to the outliers later. 
@@ -226,15 +236,15 @@ When we include all meteorological variables and one lag factor, we find that on
  \caption{Significant variables in the linear model.}
  \end{table}
  
-Based on the table above, the estimated coefficients of 
+Based on Table 1 (below), the estimated coefficients of 
 mean temperature, mean sea level pressure and mean wind speed for each day are negative, 
 which indicates negative effects of increasing these
 meteorological variables on the \(PM_{2.5}\) values. 
 By contrast, the positive coefficient of our one-day lag term suggests a positive relationship between
 \(PM_{2.5}\) and the lagged response.
 
-Is the model successful? The adjusted R-squared is 0.5116, which is weaker than we might want considering the previous day's mean is included and indicates the fitted model is not ideal. 
-In Figure 8 (left), we see that the residuals increase with the fitted value. Together, these facts suggest we should look for an appropriate transformation of the data.
+Is this model successful? The adjusted R-squared is 0.5116, which is weaker than we might want considering the previous day's mean is included and indicates the fitted model is not ideal. 
+In Figure 7 (left), we see that the residuals increase with the fitted value. Together, these facts suggest we should look for an appropriate transformation of the data.
 
 \begin{figure}
 \centering
@@ -267,7 +277,7 @@ In order to deal with the residual pattern, we tried a Box-Cox transformation on
       \caption{Daily averages for every day from 2013-2015--points from 2013 are displayed in blue, points from 2014 in green, and points from 2015 in black.}
 \end{figure}
 
-As can be seen in Figure 7 above, the outliers of 2015 were concentrated in January, Feburary, October, November, and December. These are the months when temperatures are relatively low within a year. Naturally, we want to see if this phenomenon holds across many years. So we looked at the three years of data from 2013 to 2015. Table 2 below shows the results, which confirm the concentration of outliers in the October-February season.
+As can be seen in Figure 8 above, the outliers of 2015 were concentrated in January, Feburary, October, November, and December. These are the months when temperatures are relatively low within a year. Naturally, we want to see if this phenomenon holds across many years. So we looked at the three years of data from 2013 to 2015. Table 2 shows the results, which confirm the concentration of outliers in the October-February season.
 
 \begin{table}[t]
 \begin{tabular}{| ccc | ccc | ccc |}
@@ -305,7 +315,7 @@ Month & Day & Mean \(PM_{2.5}\) \\ \hline
 &&&12 & 9 & 358.6 &&& \\
 \hline
 \end{tabular}
-\caption{Outliers with mean \(PM_{2.5} > 250\)}
+\caption{Outliers with mean \(PM_{2.5} > 250\) in 2013-2015}
 \end{table}
 
 In the regression we performed above, there is a solid linear relationship between the \(PM_{2.5}\) values (excluding extreme values) and the meteorological variables. So we wanted to check if there's a linear relationship among the extreme values and the meteorological variables on those days. 
@@ -468,9 +478,9 @@ Pohjola, M. A., A. Kousa, J. Kukkonen, J. Härkönen, A. Karppinen, P. Aarnio, a
 Tai, Amos PK, Loretta J. Mickley, and Daniel J. Jacob. "Correlations between fine particulate matter (PM 2.5) and meteorological variables in the United States: Implications for the sensitivity of PM 2.5 to climate change." \textit{Atmospheric Environment} 44, no. 32 (2010): 3976-3984.
 
 \bibitem{Inversion} Huber, Anna. ``Inversion Layers,'' \textit{csun.edu}. Aug. 26, 2004. Accessed from web on Feb. 24, 2016. 
-Illustration sourced to [Turco2002]
+Illustration sourced to [18]
 
-\bibitem{Inversion2}{[Turco2002]}
+\bibitem{Inversion2}
 Turco, Richard P. Earth Under Siege: From Air Pollution to Global Change. New York: Oxford University Press, 2002. Print.
 
 \bibitem{Hawkins10}
@@ -485,23 +495,26 @@ Hawkins, Timothy W., and Lisa A. Holland. "Synoptic and local weather conditions
 
 
 
-\textbf{Personal Thinking about Project One}
+\textbf{Personal Statement}
 
-\textit{Xingxing Tong}
+\textit{Alex Dewey}
 
-Personally, I really like this kind of cooperation format between teammates. We created our own GitHub repository at the beginning of this semester and put each week’s outcomes into different files of the repository. We keep updating the README file to record important group discussions. Group members’ different duties and deadlines can also be found in our README file. I reckon this method can improve our efficiency. Building this structure is quite time consuming at the beginning. However, once we got used to this pattern it does save us a lot of time in general. One of my major duties in this team is to create an efficient way for our group working via GitHub. It seems that this part of duty works pretty well for now.
+\paragraph{}Most of the groups I've ever been in tend to go in one of two general directions:
 
-There two major challenges in the process. One of them is how to use GitHub to conduct teamwork efficiently. I mentioned our exploration in this area above.
+\begin{itemize}
+\item One person takes control of the group, does by far the most work, and claims the most credit, or:
+\item No one takes control of the group and the group doesn't find cohesion.
+\end{itemize}
 
-Another challenge is how to combine our team together and make the best of our diverse background. Since each of our team member has his/her own academic background, strength and weakness. Given the main topic of project is the air quality of China, the question we wish to answer and methods we want to use may vary from person to person. How to combine these three or four separate parts together in a natural way? It is a tough question for us.
+\paragraph{}From everyone I've ever spoken to, both experiences are pretty common. This group thankfully went much better than that. We genuinely approached problems as a group, we met to discuss specific roles, deadlines, and expectations, and while we all put effort into the group, no one tried to impose their specific vision.  We worked hard in this group, but we rarely overtaxed ourselves. We gave advice, but rarely gave commands. It was comfortable but not complacent. Cohesive but not stifling.
 
-Our solution is diving our report into three part. In the part one, I just did a few basic visualization exploration based on the raw dataset providing our audience an intuitive idea about why we are so obsessed with the air quality situation in Beijing among five different major cities in China. Quantitative analysis have been done in the second part by Jiang and Shengqian. Their aim is to explain the PM 2.5 of Beijing in the “statistical” way. Alex reckons that hierarchical model is a good way to reflect the effects of days and hours upon PM 2.5. However, building this model is not an easy job for us. So we put his model in our further exploration part. We hope this structure of our report can show readers the different levels of exploration in our project.
+\paragraph{}We didn't really get a specific result from our project, and in terms of either the corporate or the academic world, that might be a problem in terms of funding or continuing a project. Indeed, we probably could have focused our efforts more on honing in on one specific question and answer, and how best to present our results in interesting ways , and that might have been helpful for getting something more at the end of the day. On the other hand, it strikes me that most meaningful progress on any non-trivial question of data science rarely takes just a few weeks, but is built on sustainable practices, realistic deadlines, good communication, and consistent progress over many months or even years. And that's something we did extremely well.
 
-This project starts at the first week and it lasts almost five weeks. I really enjoy this journey. When I look at our repository, I can find the different timelines of our project. It shows me how we build our final report through one small step by another gradually. It is amazing!
+\paragraph{}There is a certain pressure to find a good-looking result in college and in business, which seems to be the major drive for ambitious people to take over groups. But those groups by their very nature are more prone to conflict than we were, learn less from one another than we did, and ultimately strike me as being much less satisfying and productive in the long term than we probably would be. Better the slow, inclusive search for a promising problem than the hasty, ambitious pursuit of the easy solution.
 
+\paragraph{}One minor area we could have improved upon is to be a bit more forceful with pursuing our individual work and taken on a little more risk. We had three different promising threads for research, and we seemed hesitant to pursue any of them with too much vigor because none of us envisioned our individual projects as something we'd be able to present as a full project, and we wanted to be able to integrate our individual work with one another's, even though we never really developed a good plan for how we would integrate them. In the long term, that might have been a problem.
 
-
-\emph{NOTE:} The personal reports of other team members can be found in their own course systems.
+\paragraph{}Minor issues of coordination aside, the experience was extremely positive.
 \end{document}
 
 
